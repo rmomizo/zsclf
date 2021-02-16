@@ -6,9 +6,9 @@ Created on Tue Feb 16 11:02:02 2021
 @author: ryanomizo
 """
 
+#ktrain code adapted from ktrain tutorial
+#https://nbviewer.jupyter.org/github/amaiya/ktrain/blob/master/examples/text/zero_shot_learning_with_nli.ipynb
 import streamlit as st
-# To make things easier later, we're also importing numpy and pandas for
-# working with sample data.
 import numpy as np
 import pandas as pd
 import re
@@ -24,27 +24,30 @@ def tuple_to_dataframe(decision):
 
 @st.cache(allow_output_mutation=True,suppress_st_warning=True)
 def load_model(): 
-#    textcat = TextCategorizer(model.vocab)
-#    textcat.from_disk('spacy_fscope_classifier_gensim_web3')    
     zsl = text.ZeroShotClassifier()
     return zsl
 
-#@st.cache(allow_output_mutation=True,suppress_st_warning=True)
+def input_nli():
+    template = st.sidebar.text_input("Enter your query:", value='This sentence is')
+    return template
+
+def input_doc():
+    doc = st.sidebar.text_area("Enter or copy and paste sentences to classify; Separate multiple documents with <br>", value="Try this application.")
+    return doc
 def add_labels():
-    labels = st.sidebar.text_input('Enter your labels separated by whitespace',value='describe evaluate suggest question')
+    labels = st.sidebar.text_input('Enter your labels separated by whitespace',value='describe evaluate suggest interrogate')
     return labels.split()
     
 st.title("Zero Shot Classification Prototype")
-st.text("This prototype app utilizes transformers from Huggine Face and the ktrain machine learning library.")
+st.text("This prototype app utilizes transformers from Hugging Face and the ktrain machine learning library.")
 
-#@st.cache(allow_output_mutation=True,suppress_st_warning=True)
+
 def main():
     
     clf = load_model()
     labels = add_labels()
-    nli = st.sidebar.text_input("Enter your query:", value='This sentence is')
-    doc = st.sidebar.text_area("Enter or copy and paste sentences to classify; Separate multiple documents with <br>", value="Try out this app!")
-    
+    nli = input_nli()
+    doc = input_doc()    
     
     
     
