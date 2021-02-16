@@ -30,14 +30,14 @@ def load_model():
     return zsl
 
 def input_nli():
-    template = st.sidebar.text_input("Enter your query:", value='This sentence is')
+    template = st.sidebar.text_input("Enter your query:", value='This sentence will')
     return template
 
 def input_doc():
     doc = st.sidebar.text_area("Enter or copy and paste sentences to classify; Separate multiple documents with <br>", value="Try this application.")
     return doc
 def add_labels():
-    labels = st.sidebar.text_input('Enter your labels separated by whitespace',value='denote evaluate suggest interrogate')
+    labels = st.sidebar.text_input('Enter your labels separated by whitespace',value='describe evaluate suggest interrogate')
     return labels.split()
     
 st.title("Zero Shot Classification Prototype")
