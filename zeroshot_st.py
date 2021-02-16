@@ -35,7 +35,7 @@ def input_doc():
     doc = st.sidebar.text_area("Enter or copy and paste sentences to classify; Separate multiple documents with <br>", value="Try this application.")
     return doc
 def add_labels():
-    labels = st.sidebar.text_input('Enter your labels separated by whitespace',value='describe evaluate suggest interrogate')
+    labels = st.sidebar.text_input('Enter your labels separated by whitespace',value='denote evaluate suggest interrogate')
     return labels.split()
     
 st.title("Zero Shot Classification Prototype")
@@ -58,11 +58,14 @@ def main():
         dx = []
         for prediction in predictions:
             dx.append(tuple_to_dataframe(prediction))
-            st.dataframe(pd.concat(dx))
+        df = pd.concat(dx)
+        df.insert(0, 'text', docs)
+        st.dataframe(df)
     else:
         predictions = clf.predict(doc, labels=labels, include_labels=True,
                 nli_template=nli + "{}.",multilabel=False)
         d = tuple_to_dataframe(predictions)
+        d.insert(0,'text',doc)
         st.dataframe(d)
     
         
