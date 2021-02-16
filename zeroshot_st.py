@@ -8,6 +8,8 @@ Created on Tue Feb 16 11:02:02 2021
 
 #ktrain code adapted from ktrain tutorial
 #https://nbviewer.jupyter.org/github/amaiya/ktrain/blob/master/examples/text/zero_shot_learning_with_nli.ipynb
+#Reference
+#Maiya, A. S. (2020). ktrain: A low-code library for augmented machine learning. arXiv preprint arXiv:2004.10703.
 import streamlit as st
 import numpy as np
 import pandas as pd
