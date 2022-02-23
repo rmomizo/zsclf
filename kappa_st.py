@@ -16,7 +16,7 @@ def chi():
     |s2|10|15|25|
     """)
     
-    st.text("""
+    st.write("""
     1. Input the significant value (default/max value is .05)
     2. Copy the codes of your first sample into the Sampe 1 text entry field and hit "Enter." 
     3. Copy the codes for your second sample into the Sample 2 text entry field and hit "Enter."
@@ -36,7 +36,7 @@ def chi():
     st.write('p-value: ', p_val)
     st.write('degree of freedom: ',dof) 
     st.write('\n chi2 test statistic: ',chi, 'critical value: ',crit_val,)
-    st.write('For an extended discussion of using chi2 tests for homogeneity for qualitative coding, see [Geisler and Swarts (2019)](https://wac.colostate.edu/docs/books/codingstreams/chapter9.pdf'))
+    st.write("For an extended discussion of using chi2 tests for homogeneity for qualitative coding, see [Geisler and Swarts (2019)](https://wac.colostate.edu/docs/books/codingstreams/chapter9.pdf)")
 
 def kappa():
     st.text("""
