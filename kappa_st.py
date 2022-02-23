@@ -33,7 +33,7 @@ def chi():
     p = 1 - significance
     crit_val = chi2.ppf(p, dof)
 
-    st.write('p-value is: ' + str(p_val))
+    st.write('p-value: ', p_val)
     st.write('degree of freedom: ',dof) 
     st.write('\n chi2 test statistic: ',chi, 'critical value: ',crit_val,)
 
