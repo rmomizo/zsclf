@@ -18,8 +18,8 @@ def chi():
     
     st.text("""
    
-    1. Copy the codes of Sample 1 into the Coder 1 text entry field and hit "Enter." 
-    2. Copy the codes for Sample 2 into the Sample 2 text entry field and hit "Enter."
+    1. Copy the codes of your first sample into the Sampe 1 text entry field and hit "Enter." 
+    2. Copy the codes for your second sample into the Sample 2 text entry field and hit "Enter."
     🗒️ Make sure that the coding decisions between Sample 1 and Sample 2 are numerical values. 
        """)
 
