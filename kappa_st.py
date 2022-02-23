@@ -19,7 +19,7 @@ def chi():
     s2 = [int(c) for c in col2.split()]
     chi, pval, dof, ex = chi2_contingency([s1,s2], correction=False)
 
-    st.text('p-value is: ', pval)
+    st.text('p-value is: ' + str(pval))
     significance = 0.05
     p = 1 - significance
     critical_value = chi2.ppf(p, dof)
