@@ -12,7 +12,7 @@ def kappa_button():
     try:
         return st.write(cohen_kappa_score(col1.split(),col2.split()))
     except ValueError:
-        return st.markdown('<mark>Error: Data must be the same length</mark>')
+        return st.markdown('<mark>Error: Data must be the same length</mark>', unsafe_allow_html=True)
         
     
 
