@@ -17,12 +17,12 @@ def chi():
     """)
     
     st.text("""
-   
-    1. Copy the codes of your first sample into the Sampe 1 text entry field and hit "Enter." 
-    2. Copy the codes for your second sample into the Sample 2 text entry field and hit "Enter."
+    1. Input the significant value (default/max value is .05)
+    2. Copy the codes of your first sample into the Sampe 1 text entry field and hit "Enter." 
+    3. Copy the codes for your second sample into the Sample 2 text entry field and hit "Enter."
     🗒️ Make sure that the coding decisions between Sample 1 and Sample 2 are numerical values. 
        """)
-
+    significance = st.number_input('Input significance value (default/max value is .05)', value=.05,max_value=.05)
     col1 = st.text_input('Sample 1',value='10 20 30')
     col2 = st.text_input('Sample 2', value='10 15 25')
 
@@ -31,7 +31,7 @@ def chi():
     chi, pval, dof, ex = chi2_contingency([s1,s2], correction=False)
 
     st.text('p-value is: ' + str(pval))
-    significance = st.number_input('Input significance value (default/max value is .05)', value=.05,max_value=.05)
+    
     p = 1 - significance
     critical_value = chi2.ppf(p, dof)
 
