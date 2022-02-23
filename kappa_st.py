@@ -69,7 +69,7 @@ def main():
 st.title("Cohen's Kappa and chi2 Calculator")
 st.subheader("Calculate the inter-rater agreement between two coders using sklearn's `cohen_kappa_score` module or calculate the chi2 homogeneity of two samples with `scipy`")
 
-st.subheader('How to use the calculator:')
+st.subheader('How to use the calculator')
 
 
 main()
