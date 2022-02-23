@@ -8,7 +8,7 @@ def chi():
     """
     Python code adapted from Brownlee (June 15, 2018)
     """
-    st.text('This chi2 calculator assumes that your data is in the form of a contingency table:')
+    st.write('This chi2 calculator assumes that your data is in the form of a contingency table:')
     st.markdown("""
     |sample|value1|value2|value3|
     |------|------|------|------|
@@ -18,6 +18,7 @@ def chi():
 
     st.write('The chi2 calculator accepts the first row of your data in the Sample 1 field and the second row of your data in the Sample 2 field.')
     
+    st.write('To use the chi2 calculator:')
     st.write("""
     1. Input the significant value (default/max value is .05)
     2. Copy the codes of your first sample into the Sample 1 text entry field and hit "Enter." 
