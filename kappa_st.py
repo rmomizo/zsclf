@@ -27,13 +27,11 @@ def main():
     options = st.selectbox('What metric would you like to apply?',("Cohen's Kappa", 'chi2'))
     col1 = st.text_input('Coder 1',value='a a b')
     col2 = st.text_input('Coder 2', value='a a b')
-    
-    
-    
+ 
     if options == "Cohen's Kappa":
-        return kappa()
+        kappa()
     else:
-        return chi()
+        chi()
 
 st.title("Cohen's Kappa Calculator")
 st.subheader("Calculate the inter-rater agreement between two coders using sklearn's `cohen_kappa_score` module")
