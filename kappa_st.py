@@ -8,7 +8,7 @@ def kappa_button():
     col1 = st.text_input('Coder 1',value='a a b')
     col2 = st.text_input('Coder 2', value='a a b')
     st.text('Kappa Score:') 
-    st.text(col1.split())
+ 
     return st.text(cohen_kappa_score(col1.split(),col2.split()))
     
 
