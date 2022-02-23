@@ -22,7 +22,7 @@ def chi():
     3. Copy the codes for your second sample into the Sample 2 text entry field and hit "Enter."
     🗒️ Make sure that the coding decisions between Sample 1 and Sample 2 are numerical values. 
        """)
-    significance = st.number_input('Input significance value (default/max value is .05)', value=.05,max_value=.05,min_value=.005, step=.001)
+    significance = st.number_input('Input significance value (default/max value is .05)', value=.05,max_value=.05,min_value=.001, step=.001)
     col1 = st.text_input('Sample 1',value='10 20 30')
     col2 = st.text_input('Sample 2', value='10 15 25')
 
