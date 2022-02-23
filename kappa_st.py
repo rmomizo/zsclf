@@ -32,3 +32,5 @@ Pedregosa, F. and Varoquaux, G. and Gramfort, A. and Michel, V. and Thirion, B. 
 
 scikit-learn developers. (2021). sklearn.metrics.cohen_kappa_score. Retrieved from https://scikit-learn.org/stable/modules/generated/sklearn.metrics.cohen_kappa_score.html.
 """)
+
+st.write('© Ryan Omizo 2022')
