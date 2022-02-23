@@ -28,14 +28,13 @@ def chi():
 
     s1 = [int(c) for c in col1.split()]
     s2 = [int(c) for c in col2.split()]
+       
     chi, p_val, dof, ex = chi2_contingency([s1,s2], correction=False)
-
-    st.text('p-value is: ' + str(p_val))
-    
     p = 1 - significance
     crit_val = chi2.ppf(p, dof)
 
-    st.write('degree_of_freedom: ',dof) 
+    st.write('p-value is: ' + str(p_val))
+    st.write('degree of freedom: ',dof) 
     st.write('\n chi2 test statistic: ',chi, 'critical value: ',crit_val,)
 
 def kappa():
