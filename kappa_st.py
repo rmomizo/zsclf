@@ -50,7 +50,7 @@ def kappa():
     try:
         st.text('Kappa Score:') 
         st.text(cohen_kappa_score(col1.split(),col2.split()))
-        st.markdown("For more an extended presentation on Cohen's Kappa see [Using Cohen's Kappa to Gauge Interrater Reliability](https://www.slideshare.net/billhd/kappa870.)")
+        st.markdown("For more an extended presentation on Cohen's Kappa see Hart-Davidson (2014), [Using Cohen's Kappa to Gauge Interrater Reliability](https://www.slideshare.net/billhd/kappa870.)")
     except ValueError:
         st.markdown('<mark>Error: Data must be the same length</mark>', unsafe_allow_html=True)
         
