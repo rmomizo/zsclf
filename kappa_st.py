@@ -7,12 +7,13 @@ from sklearn.metrics import cohen_kappa_score
 def chi(col1,col2):
     chi, pval, dof, ex = chi2_contingency([col1,col2], correction=False)
 
-    print('p-value is: ', pval)
+    st.text('p-value is: ', pval)
     significance = 0.05
     p = 1 - significance
     critical_value = chi2.ppf(p, dof)
 
     return st.write('Test statistic: ',chi, 'critical value: ',critical_value)
+
 def kappa(col1,col2):
     
     st.text('Kappa Score:') 
@@ -29,9 +30,9 @@ def main():
     col2 = st.text_input('Coder 2', value='a a b')
  
     if options == "Cohen's Kappa":
-        kappa()
+        kappa(col1,col2)
     else:
-        chi()
+        chi(col1,col2)
 
 st.title("Cohen's Kappa Calculator")
 st.subheader("Calculate the inter-rater agreement between two coders using sklearn's `cohen_kappa_score` module")
