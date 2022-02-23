@@ -4,7 +4,7 @@ from sklearn.metrics import cohen_kappa_score
 
        
 
-def chi():
+def chi(col1,col2):
     chi, pval, dof, ex = chi2_contingency([col1,col2], correction=False)
 
     print('p-value is: ', pval)
@@ -13,14 +13,14 @@ def chi():
     critical_value = chi2.ppf(p, dof)
 
     return st.write('Test statistic: ',chi, 'critical value: ',critical_value)
-def kappa():
+def kappa(col1,col2):
     
     st.text('Kappa Score:') 
  
     try:
-        return st.text(cohen_kappa_score(col1.split(),col2.split()))
+        st.text(cohen_kappa_score(col1.split(),col2.split()))
     except ValueError:
-        return st.markdown('<mark>Error: Data must be the same length</mark>', unsafe_allow_html=True)
+        st.markdown('<mark>Error: Data must be the same length</mark>', unsafe_allow_html=True)
         
     
 def main():
