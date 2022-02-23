@@ -9,7 +9,11 @@ def kappa_button():
     col2 = st.text_input('Coder 2', value='a a b')
     st.text('Kappa Score:') 
  
-    return st.text(cohen_kappa_score(col1.split(),col2.split()))
+    try:
+        return st.text(cohen_kappa_score(col1.split(),col2.split()))
+    except ValueError:
+        return st.text('Data must be the same length')
+        
     
 
 
