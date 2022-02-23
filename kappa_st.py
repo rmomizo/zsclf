@@ -9,9 +9,15 @@ def chi(col1,col2):
     st.text("""1. Copy the codes of Sample 1 into the Coder 1 text entry field and hit "Enter." 
        2. Copy the codes for Sample 2 into the Sample 2 text entry field and hit "Enter."
 
-       🗒️ Make sure that the coding decisions between Coder 1 and Coder 2 are the same length.
+       🗒️ Make sure that the coding decisions between Sample 1 and Sample 2 are integer values of the same length.
        """)
-    chi, pval, dof, ex = chi2_contingency([col1,col2], correction=False)
+
+    col1 = st.text_input('Sample 1',value='10 20 30')
+    col2 = st.text_input('Sample 2', value='10 15 25')
+
+    s1 = [int(c) for c in col1.split()]
+    s2 = [int(c) for c in col2.split()]
+    chi, pval, dof, ex = chi2_contingency([s1,s2], correction=False)
 
     st.text('p-value is: ', pval)
     significance = 0.05
@@ -27,6 +33,8 @@ def kappa(col1,col2):
        🗒️ Make sure that the coding decisions between Coder 1 and Coder 2 are the same length.
        """)
     st.text('Kappa Score:') 
+    col1 = st.text_input('Coder 1',value='a a b')
+    col2 = st.text_input('Coder 2', value='a a b')
  
     try:
         st.text(cohen_kappa_score(col1.split(),col2.split()))
@@ -39,13 +47,11 @@ def main():
     
  
     if options == "Cohen's Kappa":
-        col1 = st.text_input('Coder 1',value='a a b')
-        col2 = st.text_input('Coder 2', value='a a b')
-        kappa(col1,col2)
+        
+        kappa()
     else:
-        col1 = st.text_input('Sample 1',value='a a b')
-        col2 = st.text_input('Sample 2', value='a a b')
-        chi(col1,col2)
+        
+        chi()
 
 st.title("Cohen's Kappa and chi2 Calculator")
 st.subheader("Calculate the inter-rater agreement between two coders using sklearn's `cohen_kappa_score` module or calculate the chi2 homogeneity of two samples with `scipy`")
