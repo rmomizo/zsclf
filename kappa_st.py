@@ -4,7 +4,7 @@ from sklearn.metrics import cohen_kappa_score
 from scipy.stats import chi2, chi2_contingency
        
 
-def chi(col1,col2):
+def chi():
        
     st.text("""1. Copy the codes of Sample 1 into the Coder 1 text entry field and hit "Enter." 
        2. Copy the codes for Sample 2 into the Sample 2 text entry field and hit "Enter."
@@ -26,7 +26,7 @@ def chi(col1,col2):
 
     return st.write('Test statistic: ',chi, 'critical value: ',critical_value)
 
-def kappa(col1,col2):
+def kappa():
     st.text("""1. Copy the codes of Coder 1 into the Coder 1 text entry field and hit "Enter." 
        2. Copy the codes for Coder 2 into the Coder 2 text entry field and hit "Enter."
 
