@@ -17,7 +17,7 @@ def kappa_button():
     
 
 
-st.title('Cohen Kappa Calculator')
+st.title("Cohen's Kappa Calculator")
 st.subheader("Calculate the inter-rater agreement between two coders using sklearn's `cohen_kappa_score` module")
 
 st.subheader('How to use the calculator:')
