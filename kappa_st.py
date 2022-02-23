@@ -36,6 +36,7 @@ def chi():
     st.write('p-value: ', p_val)
     st.write('degree of freedom: ',dof) 
     st.write('\n chi2 test statistic: ',chi, 'critical value: ',crit_val,)
+    st.write('For an extended discussion of using chi2 tests for homogeneity for qualitative coding, see [Geisler and Swarts (2019)](https://wac.colostate.edu/docs/books/codingstreams/chapter9.pdf)
 
 def kappa():
     st.text("""
@@ -50,7 +51,7 @@ def kappa():
     try:
         st.text('Kappa Score:') 
         st.text(cohen_kappa_score(col1.split(),col2.split()))
-        st.markdown("For more an extended presentation on Cohen's Kappa see Hart-Davidson (2014), [Using Cohen's Kappa to Gauge Interrater Reliability](https://www.slideshare.net/billhd/kappa870.)")
+        st.markdown("For more an extended presentation on Cohen's Kappa see Hart-Davidson (2014), [Using Cohen's Kappa to Gauge Interrater Reliability](https://www.slideshare.net/billhd/kappa870)")
     except ValueError:
         st.markdown('<mark>Error: Data must be the same length</mark>', unsafe_allow_html=True)
         
