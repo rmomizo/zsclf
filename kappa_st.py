@@ -1,7 +1,7 @@
 import streamlit as st 
 import pandas as pd 
 from sklearn.metrics import cohen_kappa_score
-
+from scipy import chi2, chi2_contingency
        
 
 def chi(col1,col2):
