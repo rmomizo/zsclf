@@ -2,11 +2,31 @@ import streamlit as st
 import pandas as pd 
 from sklearn.metrics import cohen_kappa_score
 
-
-
-def kappa_button():
+def main():
     col1 = st.text_input('Coder 1',value='a a b')
     col2 = st.text_input('Coder 2', value='a a b')
+    
+    options = st.selectbox(
+     'What metric would you like to apply?',
+     ("Cohen's Kappa", 'chi2'))
+    
+    if options == "Cohen's Kappa":
+        kappa()
+    else:
+        chi()
+       
+
+def chi():
+    chi, pval, dof, ex = chi2_contingency([col1,col2], correction=False)
+
+    print('p-value is: ', pval)
+    significance = 0.05
+    p = 1 - significance
+    critical_value = chi2.ppf(p, dof)
+
+    st.write('Test statistic: ',chi, 'critical value: ',critical_value)
+def kappa():
+    
     st.text('Kappa Score:') 
  
     try:
@@ -27,7 +47,7 @@ st.text("""1. Copy the codes of Coder 1 into the Coder 1 text entry field and hi
 🗒️ Make sure that the coding decisions between Coder 1 and Coder 2 are the same length.
 """)
 
-kappa_button()
+main()
 
 st.write("""
 ## References
