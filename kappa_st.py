@@ -12,7 +12,7 @@ def chi():
     p = 1 - significance
     critical_value = chi2.ppf(p, dof)
 
-    st.write('Test statistic: ',chi, 'critical value: ',critical_value)
+    return st.write('Test statistic: ',chi, 'critical value: ',critical_value)
 def kappa():
     
     st.text('Kappa Score:') 
@@ -24,17 +24,16 @@ def kappa():
         
     
 def main():
+    options = st.selectbox('What metric would you like to apply?',("Cohen's Kappa", 'chi2'))
     col1 = st.text_input('Coder 1',value='a a b')
     col2 = st.text_input('Coder 2', value='a a b')
     
-    options = st.selectbox(
-     'What metric would you like to apply?',
-     ("Cohen's Kappa", 'chi2'))
+    
     
     if options == "Cohen's Kappa":
-        kappa()
+        return kappa()
     else:
-        chi()
+        return chi()
 
 st.title("Cohen's Kappa Calculator")
 st.subheader("Calculate the inter-rater agreement between two coders using sklearn's `cohen_kappa_score` module")
