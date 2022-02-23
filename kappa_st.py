@@ -5,11 +5,22 @@ from scipy.stats import chi2, chi2_contingency
        
 
 def chi():
-       
-    st.text("""1. Copy the codes of Sample 1 into the Coder 1 text entry field and hit "Enter." 
-       2. Copy the codes for Sample 2 into the Sample 2 text entry field and hit "Enter."
-
-       🗒️ Make sure that the coding decisions between Sample 1 and Sample 2 are integer values of the same length.
+    """
+    Python code adapted from Brownlee (June 15, 2018)
+    """
+    st.text('This chi2 calculator assumes that your data is formatted as a contingency table:')
+    st.markdown("""
+    |sample|value1|value2|value3|
+    |------|------|------|------|
+    |s1|10|20|30|
+    |s2|10|15|25|
+    """)
+    
+    st.text("""
+   
+    1. Copy the codes of Sample 1 into the Coder 1 text entry field and hit "Enter." 
+    2. Copy the codes for Sample 2 into the Sample 2 text entry field and hit "Enter."
+    🗒️ Make sure that the coding decisions between Sample 1 and Sample 2 are numerical values. 
        """)
 
     col1 = st.text_input('Sample 1',value='10 20 30')
@@ -20,17 +31,17 @@ def chi():
     chi, pval, dof, ex = chi2_contingency([s1,s2], correction=False)
 
     st.text('p-value is: ' + str(pval))
-    significance = 0.05
+    significance = st.number_input('Input significance value (default/max value is .05)', value=.05,max_value=.05)
     p = 1 - significance
     critical_value = chi2.ppf(p, dof)
 
-    return st.write('Test statistic: ',chi, 'critical value: ',critical_value)
+    return st.write('Test statistic: ',chi, 'critical value: ',critical_value, 'degree_of_freedom: ',dof)
 
 def kappa():
-    st.text("""1. Copy the codes of Coder 1 into the Coder 1 text entry field and hit "Enter." 
-       2. Copy the codes for Coder 2 into the Coder 2 text entry field and hit "Enter."
-
-       🗒️ Make sure that the coding decisions between Coder 1 and Coder 2 are the same length.
+    st.text("""
+    1. Copy the codes of Coder 1 into the Coder 1 text entry field and hit "Enter." 
+    2. Copy the codes for Coder 2 into the Coder 2 text entry field and hit "Enter."
+    🗒️ Make sure that the coding decisions between Coder 1 and Coder 2 are the same length.
        """)
     st.text('Kappa Score:') 
     col1 = st.text_input('Coder 1',value='a a b')
@@ -64,6 +75,8 @@ main()
 st.write("""
 ## References
 Boettger, R. K., & Palmer, L. A. (2010). Quantitative content analysis: Its use in technical communication. IEEE transactions on professional communication, 53(4), 346-357.
+
+Brownlee, J. (June 15 2018). A Gentle Introduction to the Chi-Squared Test for Machine Learning. Retrieved from https://machinelearningmastery.com/chi-squared-test-for-machine-learning/.
 
 Cohen, J. (1960). A coefficient of agreement for nominal scales. Educational and psychological measurement, 20(1), 37-46.
 
