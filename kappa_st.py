@@ -43,11 +43,12 @@ def kappa():
     2. Copy the codes for Coder 2 into the Coder 2 text entry field and hit "Enter."
     🗒️ Make sure that the coding decisions between Coder 1 and Coder 2 are the same length.
        """)
-    st.text('Kappa Score:') 
+    
     col1 = st.text_input('Coder 1',value='a a b')
     col2 = st.text_input('Coder 2', value='a a b')
  
     try:
+        st.text('Kappa Score:') 
         st.text(cohen_kappa_score(col1.split(),col2.split()))
     except ValueError:
         st.markdown('<mark>Error: Data must be the same length</mark>', unsafe_allow_html=True)
