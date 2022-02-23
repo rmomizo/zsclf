@@ -35,7 +35,8 @@ def chi():
     p = 1 - significance
     crit_val = chi2.ppf(p, dof)
 
-    return st.markdown('degree_of_freedom: ',dof, '\n Test statistic: ',chi, 'critical value: ',crit_val,)
+    st.write('degree_of_freedom: ',dof) 
+    st.write('\n chi2 test statistic: ',chi, 'critical value: ',crit_val,)
 
 def kappa():
     st.text("""
