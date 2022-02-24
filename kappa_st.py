@@ -36,7 +36,8 @@ def chi():
     p = 1 - significance
     crit_val = chi2.ppf(p, dof)
     
-    c1, c2, c3, c4 = st.columns(4)
+    c1 = st.container()
+    c2, c3, c4 = st.columns(4)
     
     c1.metric('p-value', str(p_val))
     c2.metric('degree of freedom',"{:e}".format(dof)) 
@@ -81,7 +82,8 @@ st.subheader('How to use the calculator')
 
 main()
 
-st.write("""
+with st.expander("See References and Code Consulted"):
+     st.write("""
 ## References/Code Consulted
 Boettger, R. K., & Palmer, L. A. (2010). Quantitative content analysis: Its use in technical communication. IEEE transactions on professional communication, 53(4), 346-357.
 
