@@ -37,10 +37,10 @@ def chi():
     crit_val = chi2.ppf(p, dof)
     c1, c2, c3, c4 = st.columns(4)
     
-    c1.metric('p-value: ', str(p_val))
-    c2.metric('degree of freedom: ',str(dof)) 
-    c3.metric('\n chi2 test statistic: ',str(chi)) 
-    c4.metric('critical value: ',str(crit_val))
+    c1.metric('p-value: ', "{:.2f}".format(p_val))
+    c2.metric('degree of freedom: ',"{:.2f}".format(dof)) 
+    c3.metric('\n chi2 test statistic: ',"{:.2f}".format(chi)) 
+    c4.metric('critical value: ',"{:.2f}".format(crit_val))
     st.write("For an extended discussion of using chi2 tests for homogeneity for qualitative coding, see [Geisler and Swarts (2019)](https://wac.colostate.edu/docs/books/codingstreams/chapter9.pdf)")
 
 def kappa():
