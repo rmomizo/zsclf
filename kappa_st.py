@@ -35,10 +35,11 @@ def chi():
     chi, p_val, dof, ex = chi2_contingency([s1,s2], correction=False)
     p = 1 - significance
     crit_val = chi2.ppf(p, dof)
-    c1, c2, c3, c4 = st.columns(4)
+    c1 = st.columns(1)
+    c2, c3, c4 = st.columns(3)
     
     c1.metric('p-value: ', str(p_val))
-    c2.metric('degree of freedom: ',"{:.5f}".format(dof)) 
+    c2.metric('degree of freedom: ',"{:e}".format(dof)) 
     c3.metric('\n chi2 test statistic: ',"{:.5f}".format(chi)) 
     c4.metric('critical value: ',"{:.5f}".format(crit_val))
     st.write("For an extended discussion of using chi2 tests for homogeneity for qualitative coding, see [Geisler and Swarts (2019)](https://wac.colostate.edu/docs/books/codingstreams/chapter9.pdf)")
