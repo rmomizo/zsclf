@@ -1,6 +1,6 @@
 import streamlit as st 
 import pandas as pd 
-from sklearn.metrics import cohen_kappa_score
+from sklearn.metrics import cohen_kappa_score, accuracy_score
 from scipy.stats import chi2, chi2_contingency
        
 
@@ -56,8 +56,10 @@ def kappa():
     col2 = st.text_input('Coder 2', value='a a b')
  
     try:
-        #st.text('Kappa Score:') 
-        st.metric('Kappa Score',str(cohen_kappa_score(col1.split(),col2.split())))
+        c1, c2, c3 = st.columns(3)
+        c1.metric('Dataset Length',str(len(col1)))
+        c2.metric('Accuracy',str(accuracy_score(col1.split(),col2.split())))
+        c3.metric('Kappa Score',str(cohen_kappa_score(col1.split(),col2.split())))
         st.markdown("For more an extended presentation on Cohen's Kappa see Hart-Davidson (2014), [Using Cohen's Kappa to Gauge Interrater Reliability](https://www.slideshare.net/billhd/kappa870)")
     except ValueError:
         st.markdown('<mark>Error: Data must be the same length</mark>', unsafe_allow_html=True)
