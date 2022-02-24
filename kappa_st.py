@@ -37,7 +37,7 @@ def chi():
     crit_val = chi2.ppf(p, dof)
     
     c1 = st.container()
-    c2, c3, c4 = st.columns(4)
+    c2, c3, c4 = st.columns(3)
     
     c1.metric('p-value', str(p_val))
     c2.metric('degree of freedom',"{:e}".format(dof)) 
