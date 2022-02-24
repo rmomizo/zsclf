@@ -35,8 +35,8 @@ def chi():
     chi, p_val, dof, ex = chi2_contingency([s1,s2], correction=False)
     p = 1 - significance
     crit_val = chi2.ppf(p, dof)
-    c1 = st.columns(1)
-    c2, c3, c4 = st.columns(3)
+    
+    c1, c2, c3, c4 = st.columns(4)
     
     c1.metric('p-value', str(p_val))
     c2.metric('degree of freedom',"{:e}".format(dof)) 
