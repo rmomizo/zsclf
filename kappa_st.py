@@ -37,12 +37,13 @@ def chi():
     crit_val = chi2.ppf(p, dof)
     
     c1 = st.container()
-    c2, c3, c4 = st.columns(3)
+    c2, c3, c4, c5 = st.columns(4)
     
     c1.metric('p-value', str(p_val))
-    c2.metric('degree of freedom',"{:e}".format(dof)) 
-    c3.metric('\n chi2 test statistic',"{:.5f}".format(chi)) 
-    c4.metric('critical value',"{:.5f}".format(crit_val))
+    c2.metric('Dataset Length',str(len(s1)))
+    c3.metric('degree of freedom',"{:e}".format(dof)) 
+    c4.metric('\n chi2 test statistic',"{:.5f}".format(chi)) 
+    c5.metric('critical value',"{:.5f}".format(crit_val))
     st.write("For an extended discussion of using chi2 tests for homogeneity for qualitative coding, see [Geisler and Swarts (2019)](https://wac.colostate.edu/docs/books/codingstreams/chapter9.pdf)")
 
 def kappa():
@@ -57,7 +58,7 @@ def kappa():
  
     try:
         c1, c2, c3 = st.columns(3)
-        c1.metric('Dataset Length',str(len(col1)))
+        c1.metric('Dataset Length',str(len(col1.split())))
         c2.metric('Accuracy',str(accuracy_score(col1.split(),col2.split())))
         c3.metric('Kappa Score',str(cohen_kappa_score(col1.split(),col2.split())))
         st.markdown("For more an extended presentation on Cohen's Kappa see Hart-Davidson (2014), [Using Cohen's Kappa to Gauge Interrater Reliability](https://www.slideshare.net/billhd/kappa870)")
