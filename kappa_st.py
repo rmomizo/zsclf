@@ -8,14 +8,18 @@ def chi():
     """
     Python code adapted from Brownlee (June 15, 2018)
     """
+    st.subheader('chi2 Test of Homogeneity')
     st.text('This chi2 calculator assumes that your data is in the form of a contingency table:')
-    st.markdown("""
+    
+    
+       st.markdown("""
     |sample|value1|value2|value3|
     |------|------|------|------|
     |sample1|10|20|30|
     |sample2|10|15|25|
+    
     """)
-    st.subheader('chi2 Test of Homogeneity')
+       
     st.text('The chi2 calculator accepts the first row of your data in the Sample 1 field and the second row of your data in the Sample 2 field.')
     
     st.text('To use the chi2 calculator:')
