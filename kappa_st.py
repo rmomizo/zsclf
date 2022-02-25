@@ -9,7 +9,7 @@ def chi():
     Python code adapted from Brownlee (June 15, 2018)
     """
     st.title('chi2 Test of Homogeneity')
-    st.text('This chi2 calculator assumes that your data is in the form of a contingency table:')
+    st.text('This chi2 calculator assumes that your data takes the form of a contingency table:')
     
     
     st.markdown("""
@@ -17,17 +17,28 @@ def chi():
     |------|------|------|------|
     |sample1|10|20|30|
     |sample2|10|15|25|
-    
     """)
+    st.caption("In this case, you copy and paste row-wise values")
+    st.markdown('Or')
+    st.markdown("""
+    |value|sample 1|sample 2|
+    |-----|--------|--------|
+    |value1|10|10|
+    |value2|20|15|
+    |value3|30|25|
+    """)
+    st.caption("In this case, you copy and paste column-wise values")
+       
+    
        
     st.write('The chi2 calculator accepts the first row of your data in the Sample 1 field and the second row of your data in the Sample 2 field.')
     
     st.write('To use the chi2 calculator:')
     st.write("""
     1. Input the significant value (default/max value is .05)
-    2. Copy the codes of your first sample into the Sample 1 text entry field and hit "Enter." 
-    3. Copy the codes for your second sample into the Sample 2 text entry field and hit "Enter."
-    ❗Make sure that the coding decisions between Sample 1 and Sample 2 are numerical values. 
+    2. Copy the values of your first sample and paste into the Sample 1 text entry field and hit "Enter." 
+    3. Copy the values for your second sample and paste into the Sample 2 text entry field and hit "Enter."
+    ❗Samples 1 and Sample 2 must be numerical values. 
        """)
     significance = float(st.text_input('Input significance value (default/max value is .05)', value='.05'))
     col1 = st.text_input('Sample 1',value='10 20 30')
