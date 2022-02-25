@@ -1,6 +1,6 @@
 import streamlit as st 
 import pandas as pd 
-from sklearn.metrics import cohen_kappa_score, accuracy_score
+from sklearn.metrics import cohen_kappa_score, accuracy_score, confusion_matrix
 from scipy.stats import chi2, chi2_contingency
        
 
@@ -39,7 +39,7 @@ def chi():
     chi, p_val, dof, ex = chi2_contingency([s1,s2], correction=False)
     p = 1 - significance
     crit_val = chi2.ppf(p, dof)
-    
+    st.subheader('Results')
     c1 = st.container()
     c2, c3, c4, c5 = st.columns(4)
     
@@ -49,6 +49,78 @@ def chi():
     c4.metric('\n chi2 test statistic',"{:.5f}".format(chi)) 
     c5.metric('critical value',"{:.5f}".format(crit_val))
     st.write("For an extended discussion of using chi2 tests for homogeneity for qualitative coding, see [Geisler and Swarts (2019)](https://wac.colostate.edu/docs/books/codingstreams/chapter9.pdf)")
+
+def chi_file_upload():
+    """
+    Python code adapted from Brownlee (June 15, 2018)
+    """
+    st.title('chi2 Test of Homogeneity')
+    st.write('This chi2 calculator assumes that your data is in the form of a contingency table:')
+    
+    
+    st.markdown("""
+    |values|sample 1|sample 2|
+    |-------|------|------|
+    |val1|30|30|
+    |val2|20|30|
+    |val3|40|15|
+    |val4|24|20|
+    
+    """)
+    
+    st.write('To use the chi2 calculator:')
+    st.write("""
+    1. Input the significance value.
+    2. Upload your contingency table as an .csv or .xlsx file. Make sure that the column names for your two samples are "sample 1" and "sample 2."
+       """)
+    significance = float(st.text_input('Input significance value (default/max value is .05)', value='.05'))
+    
+    uploaded = st.file_uploader('Upload your .csv or .xlsx file.')
+    if uploaded != None:
+        if uploaded.name.endswith('csv'):
+            df = pd.read_csv(uploaded)
+            s1 = [int(c) for c in df['sample 1']]
+            s2 = [int(c) for c in df['sample 2']]
+       
+            chi, p_val, dof, ex = chi2_contingency([s1,s2], correction=False)
+            p = 1 - significance
+            crit_val = chi2.ppf(p, dof)
+            
+            st.subheader('Results')
+            st.write('Uploaded Contingency Table:')
+            st.write(df)
+            c1 = st.container()
+            c2, c3, c4, c5 = st.columns(4)
+            
+            
+            c1.metric('p-value', str(p_val))
+            c2.metric('# of Samples',str(len(s1)))
+            c3.metric('Degrees of Freedom',"{:.2f}".format(dof)) 
+            c4.metric('\n chi2 test statistic',"{:.5f}".format(chi)) 
+            c5.metric('critical value',"{:.5f}".format(crit_val))
+            st.write("For an extended discussion of using chi2 tests for homogeneity for qualitative coding, see [Geisler and Swarts (2019)](https://wac.colostate.edu/docs/books/codingstreams/chapter9.pdf)")
+        elif uploaded.name.endswith('xlsx'):
+            df = pd.read_excel(uploaded)
+            s1 = [int(c) for c in df['sample 1']]
+            s2 = [int(c) for c in df['sample 2']]
+       
+            chi, p_val, dof, ex = chi2_contingency([s1,s2], correction=False)
+            p = 1 - significance
+            crit_val = chi2.ppf(p, dof)
+
+            st.subheader('Results')
+            st.write('Uploaded Contingency Table:')
+            st.write(df)
+
+            c1 = st.container()
+            c2, c3, c4, c5 = st.columns(4)
+    
+            c1.metric('p-value', str(p_val))
+            c2.metric('# of Samples',str(len(s1)))
+            c3.metric('Degrees of Freedom',"{:.2f}".format(dof)) 
+            c4.metric('\n chi2 test statistic',"{:.5f}".format(chi)) 
+            c5.metric('critical value',"{:.5f}".format(crit_val))
+            st.write("For an extended discussion of using chi2 tests for homogeneity for qualitative coding, see [Geisler and Swarts (2019)](https://wac.colostate.edu/docs/books/codingstreams/chapter9.pdf)")
 
 def kappa():
     st.title("Cohen's Kappa Calculator")   
@@ -62,51 +134,79 @@ def kappa():
     col2 = st.text_input('Coder 2', value='a a b')
  
     try:
+        st.subheader('Results')
         c1, c2, c3 = st.columns(3)
         c1.metric('Dataset Length',str(len(col1.split())))
         c2.metric('Accuracy',str(accuracy_score(col1.split(),col2.split())))
         c3.metric('Kappa Score',str(cohen_kappa_score(col1.split(),col2.split())))
+
+        labels = sorted(list(set(col1.split()+ col2.split())))
+        indices = [str(label)+'_' for label in labels]
+        st.write("Confusion Matrix:")
+        st.table(pd.DataFrame(confusion_matrix(col1.split(),col2.split()),index=indices,columns=labels))
+        st.caption('Note: Coder 1 is used as the baseline for evaluation.')
         st.markdown("For more an extended presentation on Cohen's Kappa see Hart-Davidson (2014), [Using Cohen's Kappa to Gauge Interrater Reliability](https://www.slideshare.net/billhd/kappa870)")
     except ValueError:
         st.markdown('<mark>Error: Data must be the same length</mark>', unsafe_allow_html=True)
     
 def kappa_file_upload():
     st.title("Cohen's Kappa Calculator")   
-    st.write("""
-    Upload your .csv or .xlsx file. Your files should feature the following format:
+    st.markdown("""
+    Upload your .csv or .xlsx file. 
+    
+    Your files should feature the following format:
        """)
        
     dff = pd.DataFrame({'Coder 1':['a','a','b'],'Coder 2': ['a','a','b']})
     st.dataframe(dff)
     
     uploaded_file = st.file_uploader("Upload your data as .csv or .xlsx")
+    
    
-    if uploaded_file is not None:
-       if str(uploaded_file).endswith('csv'):
-              df = pd.read_csv(uploaded_file, type=['csv'])
-              st.write(df)
-              col1 = df['Coder 1']
-              col2 = df['Coder 2']
-              try:
-                     c1, c2, c3 = st.columns(3)
-                     c1.metric('Dataset Length',str(len(col1.split())))
-                     c2.metric('Accuracy',str(accuracy_score(col1.split(),col2.split())))
-                     c3.metric('Kappa Score',str(cohen_kappa_score(col1.split(),col2.split())))
-                     st.markdown("For more an extended presentation on Cohen's Kappa see Hart-Davidson (2014), [Using Cohen's Kappa to Gauge Interrater Reliability](https://www.slideshare.net/billhd/kappa870)")
-              except ValueError:
-                     st.markdown('<mark>Error: Data must be the same length</mark>', unsafe_allow_html=True)
-       elif str(uploaded_file).endswith('xlsx'):
-              df = pd.read_excel(uploaded_file)
-              col1 = df['Coder 1']
-              col2 = df['Coder 2']
-              try:
-                     c1, c2, c3 = st.columns(3)
-                     c1.metric('Dataset Length',str(len(col1.split())))
-                     c2.metric('Accuracy',str(accuracy_score(col1.split(),col2.split())))
-                     c3.metric('Kappa Score',str(cohen_kappa_score(col1.split(),col2.split())))
-                     st.markdown("For more an extended presentation on Cohen's Kappa see Hart-Davidson (2014), [Using Cohen's Kappa to Gauge Interrater Reliability](https://www.slideshare.net/billhd/kappa870)")
-              except ValueError:
-                     st.markdown('<mark>Error: Data must be the same length</mark>', unsafe_allow_html=True)
+    if uploaded_file != None:
+        if str(uploaded_file.name).endswith('csv'):
+            df = pd.read_csv(uploaded_file)
+
+            st.subheader('Results')
+         
+            col1 = df['Coder 1'].tolist()
+            col2 = df['Coder 2'].tolist()
+     
+            c1, c2, c3 = st.columns(3)
+            c1.metric('Dataset Length',str(len(col1)))
+            c2.metric('Accuracy',str(accuracy_score(col1,col2)))
+            c3.metric('Kappa Score',str(cohen_kappa_score(col1,col2)))
+
+            labels = sorted(list(set(col1+ col2)))
+            indices = [str(label)+'_' for label in labels]
+            st.write("Confusion Matrix:")
+            st.table(pd.DataFrame(confusion_matrix(col1,col2),index=indices,columns=labels))
+            st.caption('Note: Coder 1 is used as the baseline for evaluation.')
+
+            st.markdown("For more an extended presentation on Cohen's Kappa see Hart-Davidson (2014), [Using Cohen's Kappa to Gauge Interrater Reliability(https://www.slideshare.net/billhd/kappa870)")
+            #except ValueError:
+             #   st.markdown('<mark>Error: Data must be the same length</mark>', unsafe_allow_html=True)
+        elif str(uploaded_file.name).endswith('xlsx'):
+           df = pd.read_excel(uploaded_file)
+           col1 = df['Coder 1'].tolist()
+           col2 = df['Coder 2'].tolist()
+
+           st.subheader('Results')
+           c1, c2, c3 = st.columns(3)
+           c1.metric('Dataset Length',str(len(col1)))
+           c2.metric('Accuracy',str(accuracy_score(col1,col2)))
+           c3.metric('Kappa Score',str(cohen_kappa_score(col1,col2)))
+
+           labels = sorted(list(set(col1+ col2)))
+           indices = [str(label)+'_' for label in labels]
+
+           st.write("Confusion Matrix (Coder 1 is treated as the baseline for evaluation):")
+           st.table(pd.DataFrame(confusion_matrix(col1,col2),index=indices,columns=labels))
+           st.caption('Note: Coder 1 is used as the baseline for evaluation.')
+
+           st.markdown("For more an extended presentation on Cohen's Kappa see Hart-Davidson (2014), [Using Cohen's Kappa to Gauge Interrater Reliability](https://www.slideshare.net/billhd/kappa870)")
+           #except ValueError:
+            #   st.markdown('<mark>Error: Data must be the same length</mark>', unsafe_allow_html=True)
     
     
 def main():
@@ -123,9 +223,11 @@ def main():
         kappa()
     elif options == "Cohen's Kappa" and data_options == "Upload .csv or .xlsx":
        kappa_file_upload()
+    elif options == 'chi2' and data_options == "Copy and Paste":
+        chi()
     else:
  
-        chi()
+        chi_file_upload()
 
 main()
 
