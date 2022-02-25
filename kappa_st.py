@@ -69,7 +69,42 @@ def kappa():
         st.markdown("For more an extended presentation on Cohen's Kappa see Hart-Davidson (2014), [Using Cohen's Kappa to Gauge Interrater Reliability](https://www.slideshare.net/billhd/kappa870)")
     except ValueError:
         st.markdown('<mark>Error: Data must be the same length</mark>', unsafe_allow_html=True)
-        
+    
+def kappa_file_upload():
+    st.title("Cohen's Kappa Calculator")   
+    st.write("""
+    1. Copy the codes of Coder 1 into the Coder 1 text entry field and hit "Enter." 
+    2. Copy the codes for Coder 2 into the Coder 2 text entry field and hit "Enter."
+    ❗ Make sure that the coding decisions between Coder 1 and Coder 2 are the same length.
+       """)
+    
+    uploaded_file = st.file_uploader("Choose a file")
+    if uploaded_file is not None:
+       if uploaded_file.endswith('.csv'):
+              df = pd.read_csv(uploaded_file)
+              col1 = df['Coder 1']
+              col2 = df['Coder 2']
+              try:
+                     c1, c2, c3 = st.columns(3)
+                     c1.metric('Dataset Length',str(len(col1.split())))
+                     c2.metric('Accuracy',str(accuracy_score(col1.split(),col2.split())))
+                     c3.metric('Kappa Score',str(cohen_kappa_score(col1.split(),col2.split())))
+                     st.markdown("For more an extended presentation on Cohen's Kappa see Hart-Davidson (2014), [Using Cohen's Kappa to Gauge Interrater Reliability](https://www.slideshare.net/billhd/kappa870)")
+               except ValueError:
+                     st.markdown('<mark>Error: Data must be the same length</mark>', unsafe_allow_html=True)
+         elif uploaded_file.endswith('.csv'):
+              df = pd.read_excel(uploaded_file)
+              col1 = df['Coder 1']
+              col2 = df['Coder 2']
+              try:
+                     c1, c2, c3 = st.columns(3)
+                     c1.metric('Dataset Length',str(len(col1.split())))
+                     c2.metric('Accuracy',str(accuracy_score(col1.split(),col2.split())))
+                     c3.metric('Kappa Score',str(cohen_kappa_score(col1.split(),col2.split())))
+                     st.markdown("For more an extended presentation on Cohen's Kappa see Hart-Davidson (2014), [Using Cohen's Kappa to Gauge Interrater Reliability](https://www.slideshare.net/billhd/kappa870)")
+               except ValueError:
+                     st.markdown('<mark>Error: Data must be the same length</mark>', unsafe_allow_html=True)
+    
     
 def main():
     
@@ -77,13 +112,14 @@ def main():
     st.sidebar.subheader("Calculate the inter-rater agreement between two coders using sklearn's `cohen_kappa_score` module or calculate the chi2 homogeneity of two samples with `scipy`")
 
     options = st.sidebar.selectbox('What metric would you like to apply?',("Cohen's Kappa", 'chi2'))
+    data_options = st.sidebar.selectbox('How would you like to submit your data?',("Copy and Paste","Upload .csv or .xlsx"))
     
  
     if options == "Cohen's Kappa":
         
         kappa()
     else:
-        
+ 
         chi()
 
 main()
