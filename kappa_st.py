@@ -8,15 +8,15 @@ def chi():
     """
     Python code adapted from Brownlee (June 15, 2018)
     """
-    st.write('This chi2 calculator assumes that your data is in the form of a contingency table:')
+    st.text('This chi2 calculator assumes that your data is in the form of a contingency table:')
     st.markdown("""
     |sample|value1|value2|value3|
     |------|------|------|------|
     |sample1|10|20|30|
     |sample2|10|15|25|
     """)
-    st.sidebar.subheader('chi2 Test of Homogeneity')
-    st.write('The chi2 calculator accepts the first row of your data in the Sample 1 field and the second row of your data in the Sample 2 field.')
+    st.subheader('chi2 Test of Homogeneity')
+    st.text('The chi2 calculator accepts the first row of your data in the Sample 1 field and the second row of your data in the Sample 2 field.')
     
     st.text('To use the chi2 calculator:')
     st.text("""
@@ -44,7 +44,7 @@ def chi():
     c3.metric('degree of freedom',"{:e}".format(dof)) 
     c4.metric('\n chi2 test statistic',"{:.5f}".format(chi)) 
     c5.metric('critical value',"{:.5f}".format(crit_val))
-    st.write("For an extended discussion of using chi2 tests for homogeneity for qualitative coding, see [Geisler and Swarts (2019)](https://wac.colostate.edu/docs/books/codingstreams/chapter9.pdf)")
+    st.text("For an extended discussion of using chi2 tests for homogeneity for qualitative coding, see [Geisler and Swarts (2019)](https://wac.colostate.edu/docs/books/codingstreams/chapter9.pdf)")
 
 def kappa():
     st.subheader("Cohen's Kappa Calculator")   
@@ -110,4 +110,4 @@ Scott, William A. “Reliability of Content Analysis: The Case of Nominal Scale 
 Virtanen, P., Ralf Gommers, Travis E. Oliphant, Matt Haberland, Tyler Reddy, David Cournapeau, Evgeni Burovski, Pearu Peterson, Warren Weckesser, Jonathan Bright, Stéfan J. van der Walt, Matthew Brett, Joshua Wilson, K. Jarrod Millman, Nikolay Mayorov, Andrew R. J. Nelson, Eric Jones, Robert Kern, Eric Larson, C J Carey, İlhan Polat, Yu Feng, Eric W. Moore, Jake VanderPlas, Denis Laxalde, Josef Perktold, Robert Cimrman, Ian Henriksen, E. A. Quintero, Charles R. Harris, Anne M. Archibald, Antônio H. Ribeiro, Fabian Pedregosa, Paul van Mulbregt & SciPy 1.0 Contributors. (2020). SciPy 1.0: fundamental algorithms for scientific computing in Python. Nature methods, 17(3), 261-272
 """)
 
-st.sidebar.write('© Ryan Omizo 2022')
+st.sidebar.text('© Ryan Omizo 2022')
