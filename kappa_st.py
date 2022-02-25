@@ -67,6 +67,10 @@ def kappa():
         
     
 def main():
+    
+    st.sidebar.title("Cohen's Kappa and chi2 Calculator")
+    st.sidebar.subheader("Calculate the inter-rater agreement between two coders using sklearn's `cohen_kappa_score` module or calculate the chi2 homogeneity of two samples with `scipy`")
+
     options = st.sidebar.selectbox('What metric would you like to apply?',("Cohen's Kappa", 'chi2'))
     
  
@@ -77,12 +81,9 @@ def main():
         
         chi()
 
-st.title("Cohen's Kappa and chi2 Calculator")
-st.subheader("Calculate the inter-rater agreement between two coders using sklearn's `cohen_kappa_score` module or calculate the chi2 homogeneity of two samples with `scipy`")
-
 main()
 
-with st.expander("See References and Code Consulted"):
+with st.sidebar.expander("See References and Code Consulted"):
      st.write("""
 ## References/Code Consulted
 Boettger, R. K., & Palmer, L. A. (2010). Quantitative content analysis: Its use in technical communication. IEEE transactions on professional communication, 53(4), 346-357.
