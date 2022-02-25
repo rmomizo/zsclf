@@ -12,7 +12,7 @@ def chi():
     st.text('This chi2 calculator assumes that your data is in the form of a contingency table:')
     
     
-       st.markdown("""
+    st.markdown("""
     |sample|value1|value2|value3|
     |------|------|------|------|
     |sample1|10|20|30|
