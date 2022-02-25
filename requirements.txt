@@ -1,3 +1,4 @@
 sklearn
 scipy
 statsmodels
+xlsxwriter
