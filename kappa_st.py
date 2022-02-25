@@ -67,7 +67,7 @@ def kappa():
         
     
 def main():
-    options = st.selectbox('What metric would you like to apply?',("Cohen's Kappa", 'chi2'))
+    options = st.sidebar.selectbox('What metric would you like to apply?',("Cohen's Kappa", 'chi2'))
     
  
     if options == "Cohen's Kappa":
@@ -79,9 +79,6 @@ def main():
 
 st.title("Cohen's Kappa and chi2 Calculator")
 st.subheader("Calculate the inter-rater agreement between two coders using sklearn's `cohen_kappa_score` module or calculate the chi2 homogeneity of two samples with `scipy`")
-
-st.subheader('How to use the calculator')
-
 
 main()
 
