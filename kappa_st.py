@@ -80,8 +80,9 @@ def kappa_file_upload():
     st.dataframe(dff)
     
     uploaded_file = st.file_uploader("Upload your data as .csv or .xlsx")
+   
     if uploaded_file is not None:
-       if uploaded_file.endswith('.csv'):
+       if uploaded_file.endswith('csv'):
               df = pd.read_csv(uploaded_file)
               col1 = df['Coder 1']
               col2 = df['Coder 2']
@@ -93,7 +94,7 @@ def kappa_file_upload():
                      st.markdown("For more an extended presentation on Cohen's Kappa see Hart-Davidson (2014), [Using Cohen's Kappa to Gauge Interrater Reliability](https://www.slideshare.net/billhd/kappa870)")
               except ValueError:
                      st.markdown('<mark>Error: Data must be the same length</mark>', unsafe_allow_html=True)
-       elif uploaded_file.endswith('.xlsx'):
+       elif uploaded_file.endswith('xlsx'):
               df = pd.read_excel(uploaded_file)
               col1 = df['Coder 1']
               col2 = df['Coder 2']
