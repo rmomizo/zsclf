@@ -79,7 +79,7 @@ def kappa_file_upload():
     dff = pd.DataFrame({'Coder 1':['a','a','b'],'Coder 2': ['a','a','b']})
     st.dataframe(dff)
     
-    uploaded_file = st.file_uploader("Choose a file")
+    uploaded_file = st.file_uploader("Upload your data as .csv or .xlsx")
     if uploaded_file is not None:
        if uploaded_file.endswith('.csv'):
               df = pd.read_csv(uploaded_file)
