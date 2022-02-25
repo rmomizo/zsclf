@@ -2,3 +2,4 @@ sklearn
 scipy
 statsmodels
 xlsxwriter
+openpyxl
