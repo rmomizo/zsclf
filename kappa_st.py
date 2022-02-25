@@ -115,9 +115,11 @@ def main():
     data_options = st.sidebar.selectbox('How would you like to submit your data?',("Copy and Paste","Upload .csv or .xlsx"))
     
  
-    if options == "Cohen's Kappa":
+    if options == "Cohen's Kappa" and data_options == "Copy and Paste":
         
         kappa()
+    elif options == "Cohen's Kappa" and data_options == "Upload .csv or .xlsx":
+       kappa_file_upload()
     else:
  
         chi()
