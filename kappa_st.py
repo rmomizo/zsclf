@@ -15,11 +15,11 @@ def chi():
     |sample1|10|20|30|
     |sample2|10|15|25|
     """)
-
+    st.sidebar.subheader('chi2 Test of Homogeneity')
     st.write('The chi2 calculator accepts the first row of your data in the Sample 1 field and the second row of your data in the Sample 2 field.')
     
-    st.write('To use the chi2 calculator:')
-    st.write("""
+    st.text('To use the chi2 calculator:')
+    st.text("""
     1. Input the significant value (default/max value is .05)
     2. Copy the codes of your first sample into the Sample 1 text entry field and hit "Enter." 
     3. Copy the codes for your second sample into the Sample 2 text entry field and hit "Enter."
@@ -47,6 +47,7 @@ def chi():
     st.write("For an extended discussion of using chi2 tests for homogeneity for qualitative coding, see [Geisler and Swarts (2019)](https://wac.colostate.edu/docs/books/codingstreams/chapter9.pdf)")
 
 def kappa():
+    st.subheader("Cohen's Kappa Calculator")   
     st.text("""
     1. Copy the codes of Coder 1 into the Coder 1 text entry field and hit "Enter." 
     2. Copy the codes for Coder 2 into the Coder 2 text entry field and hit "Enter."
