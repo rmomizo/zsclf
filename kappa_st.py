@@ -9,7 +9,7 @@ def chi():
     Python code adapted from Brownlee (June 15, 2018)
     """
     st.title('chi2 Test of Homogeneity')
-    st.text('This chi2 calculator assumes that your data takes the form of a contingency table:')
+    st.write('This chi2 calculator assumes that your data takes the form of a contingency table:')
     
     
     st.markdown("""
