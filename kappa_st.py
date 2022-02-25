@@ -83,8 +83,8 @@ def kappa_file_upload():
    
     if uploaded_file is not None:
        if str(uploaded_file).endswith('csv'):
-              df = pd.read_csv(uploaded_file)
-              st.dataframe(df)
+              df = pd.read_csv(uploaded_file, type=['csv'])
+              st.write(df)
               col1 = df['Coder 1']
               col2 = df['Coder 2']
               try:
