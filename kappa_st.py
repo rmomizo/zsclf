@@ -20,10 +20,10 @@ def chi():
     
     """)
        
-    st.text('The chi2 calculator accepts the first row of your data in the Sample 1 field and the second row of your data in the Sample 2 field.')
+    st.write('The chi2 calculator accepts the first row of your data in the Sample 1 field and the second row of your data in the Sample 2 field.')
     
-    st.text('To use the chi2 calculator:')
-    st.text("""
+    st.write('To use the chi2 calculator:')
+    st.write("""
     1. Input the significant value (default/max value is .05)
     2. Copy the codes of your first sample into the Sample 1 text entry field and hit "Enter." 
     3. Copy the codes for your second sample into the Sample 2 text entry field and hit "Enter."
@@ -48,11 +48,11 @@ def chi():
     c3.metric('degree of freedom',"{:e}".format(dof)) 
     c4.metric('\n chi2 test statistic',"{:.5f}".format(chi)) 
     c5.metric('critical value',"{:.5f}".format(crit_val))
-    st.text("For an extended discussion of using chi2 tests for homogeneity for qualitative coding, see [Geisler and Swarts (2019)](https://wac.colostate.edu/docs/books/codingstreams/chapter9.pdf)")
+    st.write("For an extended discussion of using chi2 tests for homogeneity for qualitative coding, see [Geisler and Swarts (2019)](https://wac.colostate.edu/docs/books/codingstreams/chapter9.pdf)")
 
 def kappa():
     st.subheader("Cohen's Kappa Calculator")   
-    st.text("""
+    st.write("""
     1. Copy the codes of Coder 1 into the Coder 1 text entry field and hit "Enter." 
     2. Copy the codes for Coder 2 into the Coder 2 text entry field and hit "Enter."
     🗒️ Make sure that the coding decisions between Coder 1 and Coder 2 are the same length.
@@ -114,4 +114,4 @@ Scott, William A. “Reliability of Content Analysis: The Case of Nominal Scale 
 Virtanen, P., Ralf Gommers, Travis E. Oliphant, Matt Haberland, Tyler Reddy, David Cournapeau, Evgeni Burovski, Pearu Peterson, Warren Weckesser, Jonathan Bright, Stéfan J. van der Walt, Matthew Brett, Joshua Wilson, K. Jarrod Millman, Nikolay Mayorov, Andrew R. J. Nelson, Eric Jones, Robert Kern, Eric Larson, C J Carey, İlhan Polat, Yu Feng, Eric W. Moore, Jake VanderPlas, Denis Laxalde, Josef Perktold, Robert Cimrman, Ian Henriksen, E. A. Quintero, Charles R. Harris, Anne M. Archibald, Antônio H. Ribeiro, Fabian Pedregosa, Paul van Mulbregt & SciPy 1.0 Contributors. (2020). SciPy 1.0: fundamental algorithms for scientific computing in Python. Nature methods, 17(3), 261-272
 """)
 
-st.sidebar.text('© Ryan Omizo 2022')
+st.sidebar.write('© Ryan Omizo 2022')
