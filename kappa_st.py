@@ -102,7 +102,7 @@ def kappa_file_upload():
                      c2.metric('Accuracy',str(accuracy_score(col1.split(),col2.split())))
                      c3.metric('Kappa Score',str(cohen_kappa_score(col1.split(),col2.split())))
                      st.markdown("For more an extended presentation on Cohen's Kappa see Hart-Davidson (2014), [Using Cohen's Kappa to Gauge Interrater Reliability](https://www.slideshare.net/billhd/kappa870)")
-               except ValueError:
+              except ValueError:
                      st.markdown('<mark>Error: Data must be the same length</mark>', unsafe_allow_html=True)
     
     
