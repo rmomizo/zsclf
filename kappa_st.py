@@ -8,7 +8,7 @@ def chi():
     """
     Python code adapted from Brownlee (June 15, 2018)
     """
-    st.subheader('chi2 Test of Homogeneity')
+    st.title('chi2 Test of Homogeneity')
     st.text('This chi2 calculator assumes that your data is in the form of a contingency table:')
     
     
@@ -27,7 +27,7 @@ def chi():
     1. Input the significant value (default/max value is .05)
     2. Copy the codes of your first sample into the Sample 1 text entry field and hit "Enter." 
     3. Copy the codes for your second sample into the Sample 2 text entry field and hit "Enter."
-    🗒️ Make sure that the coding decisions between Sample 1 and Sample 2 are numerical values. 
+    ❗Make sure that the coding decisions between Sample 1 and Sample 2 are numerical values. 
        """)
     significance = float(st.text_input('Input significance value (default/max value is .05)', value='.05'))
     col1 = st.text_input('Sample 1',value='10 20 30')
@@ -51,11 +51,11 @@ def chi():
     st.write("For an extended discussion of using chi2 tests for homogeneity for qualitative coding, see [Geisler and Swarts (2019)](https://wac.colostate.edu/docs/books/codingstreams/chapter9.pdf)")
 
 def kappa():
-    st.subheader("Cohen's Kappa Calculator")   
+    st.title("Cohen's Kappa Calculator")   
     st.write("""
     1. Copy the codes of Coder 1 into the Coder 1 text entry field and hit "Enter." 
     2. Copy the codes for Coder 2 into the Coder 2 text entry field and hit "Enter."
-    🗒️ Make sure that the coding decisions between Coder 1 and Coder 2 are the same length.
+    ❗ Make sure that the coding decisions between Coder 1 and Coder 2 are the same length.
        """)
     
     col1 = st.text_input('Coder 1',value='a a b')
