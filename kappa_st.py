@@ -73,10 +73,11 @@ def kappa():
 def kappa_file_upload():
     st.title("Cohen's Kappa Calculator")   
     st.write("""
-    1. Copy the codes of Coder 1 into the Coder 1 text entry field and hit "Enter." 
-    2. Copy the codes for Coder 2 into the Coder 2 text entry field and hit "Enter."
-    ❗ Make sure that the coding decisions between Coder 1 and Coder 2 are the same length.
+    Upload your .csv or .xlsx file. Your files should feature the following format:
        """)
+       
+    dff = pd.DataFrame({'Coder 1':['a','a','b'],'Coder 2': ['a','a','b']})
+    st.dataframe(dff)
     
     uploaded_file = st.file_uploader("Choose a file")
     if uploaded_file is not None:
