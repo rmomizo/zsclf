@@ -306,7 +306,7 @@ If you use this app for research, please cite as:
 Omizo, R. (2022). Cohen's Kappa and chi2 Calculator. [Software]. Retrieved from https://share.streamlit.io/rmomizo/zsclf/main/kappa_st.py.
 """)
 
-with st.sidebar.expander("See References and Code Consulted"):
+with st.sidebar.expander("See References, Code Consulted, and Software Libraries Used"):
      st.write("""
 ## References/Code Consulted
 Boettger, R. K., & Palmer, L. A. (2010). Quantitative content analysis: Its use in technical communication. IEEE transactions on professional communication, 53(4), 346-357.
