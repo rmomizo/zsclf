@@ -14,48 +14,42 @@ def chi_goodness():
     st.markdown("""
     |sample|value1|value2|value3|
     |------|------|------|------|
-    |sample1|10|20|30|
+    |sample|37|75|98|
     
     """)
     st.caption("In this case, you copy and paste row-wise values")
     st.markdown('Or')
     st.markdown("""
-    |value|sample 1|
+    |value|sample|
     |-----|--------|
-    |value1|10|
-    |value2|20|
-    |value3|30|
+    |value1|37|
+    |value2|75|
+    |value3|98|
     """)
     st.caption("In this case, you copy and paste column-wise values")
-       
-    
-       
-    st.write('The chi2 calculator accepts the first row of your data in the Sample field.')
     
     st.write('To use the chi2 calculator:')
     st.write("""
     1. Input the significant value (default/max value is .05)
-    2. Copy the values of your first sample and paste into the Sample text entry field and hit "Enter." 
+    2. Copy the values of your sample and paste into the Sample text entry field and hit "Enter." 
     
     ❗By default, expected frequencies are equally likely. 
        """)
     significance = float(st.text_input('Input significance value (default/max value is .05)', value='.05'))
-    col1 = st.text_input('Sample 1',value='10 20 30')
-    
-
+    col1 = st.text_input('Sample 1',value='37 75 98')
+   
     s1 = [int(c) for c in col1.split()]
-    
-       
+   
     chi, p_val = chisquare(s1)
     p = 1 - significance
-    crit_val = chi2.ppf(p, len(col1)-1)
+    crit_val = chi2.ppf(p, len(s1)-1)
     st.subheader('Results')
     c1 = st.container()
     c2, c3, c4 = st.columns(3)
     
     c1.metric('p-value', str(p_val))
     c2.metric('Dataset Length',str(len(s1)))
-    c3.metric('degree of freedom',"{:e}".format(len(col1)-1)) 
+    c3.metric('degree of freedom',"{:e}".format(len(s1)-1)) 
     c4.metric('\n chi2 test statistic',"{:.5f}".format(chi)) 
     #c5.metric('critical value',"{:.5f}".format(crit_val))
     st.write("For an extended discussion of using chi2 goodness of fit tests for qualitative coding, see [Geisler and Swarts (2019)](https://wac.colostate.edu/docs/books/codingstreams/chapter9.pdf)")
@@ -282,7 +276,7 @@ def main():
     st.sidebar.title("Cohen's Kappa and chi2 Calculator")
     st.sidebar.subheader("Calculate the inter-rater agreement between two coders using sklearn's `cohen_kappa_score` module or calculate the chi2 homogeneity of two samples with `scipy`")
 
-    options = st.sidebar.selectbox('What metric would you like to apply?',("Cohen's Kappa", 'chi2 Homogeneity','chi2 Goodness of Fit'))
+    options = st.sidebar.selectbox('What metric would you like to apply?',("Cohen's Kappa","chi2 Goodness of Fit", "chi2 Homogeneity"))
     data_options = st.sidebar.selectbox('How would you like to submit your data?',("Copy and Paste","Upload .csv or .xlsx"))
     
  
