@@ -35,7 +35,11 @@ def chi_goodness():
     
     ❗By default, expected frequencies are equally likely. 
        """)
-    significance = float(st.text_input('Input significance value (default/max value is .05)', value='.05'))
+    significance = float(st.text_input('Input significance value (default is .05; max value is .1)', value='.05'))
+    if int(significance) > .1:
+        st.text('The maximum significance value is .1')
+    else:
+        pass
     col1 = st.text_input('Sample 1',value='37 75 98')
    
     s1 = [int(c) for c in col1.split()]
