@@ -91,9 +91,7 @@ def chi_goodness_file_upload():
         if uploaded.name.endswith('csv'):
             df = pd.read_csv(uploaded)
             s1 = df['sample']
-            
-            st.caption("📝 This app does not retain user data.")
-            
+                       
             chi, p_val = chisquare(s1)
             p = 1 - significance
             crit_val = chi2.ppf(p, len(s1)-1)
@@ -111,9 +109,7 @@ def chi_goodness_file_upload():
         elif uploaded.name.endswith('xlsx'):
             df = pd.read_excel(uploaded)
             s1 = df['sample']
-            
-            st.caption("📝 This app does not retain user data.")
-            
+                        
             chi, p_val = chisquare(s1)
             p = 1 - significance
             crit_val = chi2.ppf(p, len(s1)-1)
