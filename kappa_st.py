@@ -56,7 +56,7 @@ def chi_goodness():
     c5.metric('critical value',"{:.5f}".format(crit_val))
     st.write("For an extended discussion of using chi2 goodness of fit tests for qualitative coding, see [Geisler and Swarts (2019)](https://wac.colostate.edu/docs/books/codingstreams/chapter9.pdf)")
        
-def chi_goodness():
+def chi_goodness_file_upload():
     """
     
     """
@@ -87,7 +87,7 @@ def chi_goodness():
     uploaded = st.file_uploader('Upload your .csv or .xlsx file.')
     st.caption("📝 This app does not retain user data.")
     
-    if uploaded not None:
+    if uploaded != None:
         if uploaded.name.endswith('csv'):
             df = pd.read_csv(uploaded)
             col1 = df['sample']
