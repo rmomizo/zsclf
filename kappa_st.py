@@ -127,7 +127,7 @@ def chi_goodness_file_upload():
             c4.metric('\n chi2 test statistic',"{:.5f}".format(chi)) 
             c5.metric('critical value',"{:.5f}".format(crit_val))
             st.write("For an extended discussion of using chi2 goodness of fit tests for qualitative coding, see [Geisler and Swarts (2019)](https://wac.colostate.edu/docs/books/codingstreams/chapter9.pdf)")
-       else:
+        else:
             st.write('Please upload a .csv or .xslx file')
             
 def chi():
