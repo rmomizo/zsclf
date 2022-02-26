@@ -303,6 +303,8 @@ st.sidebar.markdown("""
 If you use this site for research, cite as:
 
 Omizo, R. (2022). Cohen's Kappa and chi2 Calculator. [Software]. Retrieved from https://share.streamlit.io/rmomizo/zsclf/main/kappa_st.py.
+""")
+
 with st.sidebar.expander("See References and Code Consulted"):
      st.write("""
 ## References/Code Consulted
