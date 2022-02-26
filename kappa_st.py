@@ -56,7 +56,80 @@ def chi_goodness():
     c5.metric('critical value',"{:.5f}".format(crit_val))
     st.write("For an extended discussion of using chi2 goodness of fit tests for qualitative coding, see [Geisler and Swarts (2019)](https://wac.colostate.edu/docs/books/codingstreams/chapter9.pdf)")
        
+def chi_goodness():
+    """
+    
+    """
+    st.title('chi2 Goodness of Fit Test')
+    st.write('This chi2 calculator assumes that your data consists of a single frequency distribution in a .csv or .xlsx file:')
+    
+    
+    st.markdown("""
+    
+    |value|sample|
+    |-----|--------|
+    |value1|37|
+    |value2|75|
+    |value3|98|
+    """)
+    st.caption("Required table format.")
+    
+    st.write('To use the chi2 calculator:')
+    st.write("""
+    1. Input the significant value (default is .05)
+    2. Upload your .csv or .xlsx file. Insure that you name your column of values "sample" like the example above. 
+   
+    ❗By default, expected frequencies are equally likely across classes. 
+       """)
+    significance = float(st.text_input('Input significance value (default is .05)', value='.05'))
+    st.caption("Significance values are often set to 0.005, 0.05, and 0.1")
+   
+    uploaded = st.file_uploader('Upload your .csv or .xlsx file.')
+    st.caption("📝 This app does not retain user data.")
+    
+    if uploaded not None:
+        if uploaded.name.endswith('csv'):
+            df = pd.read_csv(uploaded)
+            col1 = df['sample']
+            
+            st.caption("📝 This app does not retain user data.")
+            
+            chi, p_val = chisquare(s1)
+            p = 1 - significance
+            crit_val = chi2.ppf(p, len(s1)-1)
+            st.subheader('Results')
+            c1 = st.container()
+            c2, c3, c4, c5 = st.columns(4)
 
+            c1.metric('p-value', str(p_val))
+            c2.metric('Dataset Length',str(len(s1)))
+            c3.metric('degree of freedom',"{:.2f}".format(len(s1)-1)) 
+            c4.metric('\n chi2 test statistic',"{:.5f}".format(chi)) 
+            c5.metric('critical value',"{:.5f}".format(crit_val))
+            st.write("For an extended discussion of using chi2 goodness of fit tests for qualitative coding, see [Geisler and Swarts (2019)](https://wac.colostate.edu/docs/books/codingstreams/chapter9.pdf)")
+       
+        elif uploaded.name.endswith('xlsx'):
+            df = pd.read_excel(uploaded)
+            col1 = df['sample']
+            
+            st.caption("📝 This app does not retain user data.")
+            
+            chi, p_val = chisquare(s1)
+            p = 1 - significance
+            crit_val = chi2.ppf(p, len(s1)-1)
+            st.subheader('Results')
+            c1 = st.container()
+            c2, c3, c4, c5 = st.columns(4)
+
+            c1.metric('p-value', str(p_val))
+            c2.metric('Dataset Length',str(len(s1)))
+            c3.metric('degree of freedom',"{:.2f}".format(len(s1)-1)) 
+            c4.metric('\n chi2 test statistic',"{:.5f}".format(chi)) 
+            c5.metric('critical value',"{:.5f}".format(crit_val))
+            st.write("For an extended discussion of using chi2 goodness of fit tests for qualitative coding, see [Geisler and Swarts (2019)](https://wac.colostate.edu/docs/books/codingstreams/chapter9.pdf)")
+       else:
+        st.write('Please upload a .csv or .xslx file')
+            
 def chi():
     """
     Python code adapted from Brownlee (June 15, 2018)
@@ -136,7 +209,7 @@ def chi_file_upload():
     st.write('To use the chi2 calculator:')
     st.write("""
     1. Input the significance value.
-    2. Upload your contingency table as an .csv or .xlsx file. Make sure that the column names for your two samples are "sample 1" and "sample 2."
+    2. Upload your frequency table as an .csv or .xlsx file. Make sure that the column names for your two samples are "sample 1" and "sample 2."
        """)
     significance = float(st.text_input('Input significance value (default/max value is .05)', value='.05'))
     
