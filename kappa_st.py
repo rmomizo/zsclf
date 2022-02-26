@@ -90,7 +90,7 @@ def chi_goodness_file_upload():
     if uploaded != None:
         if uploaded.name.endswith('csv'):
             df = pd.read_csv(uploaded)
-            col1 = df['sample']
+            s1 = df['sample']
             
             st.caption("📝 This app does not retain user data.")
             
