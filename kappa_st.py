@@ -277,7 +277,7 @@ def main():
     
     st.sidebar.title("Cohen's Kappa and chi2 Calculator")
     st.sidebar.subheader("Calculate Cohen's Kappa coefficient between two raters using [`sklearn`](https://scikit-learn.org/stable/) or calculate the chi2 goodness of fit test on single samples or chi2 homogeneity on two samples with [`scipy`](https://docs.scipy.org/doc/scipy/index.html)")
-
+    
     options = st.sidebar.selectbox('What metric would you like to apply?',("Cohen's Kappa","chi2 Goodness of Fit", "chi2 Homogeneity"))
     data_options = st.sidebar.selectbox('How would you like to submit your data?',("Copy and Paste","Upload .csv or .xlsx"))
     
@@ -298,6 +298,11 @@ def main():
 
 main()
 
+st.sidebar.text("❗This website does not retain user data.")
+st.sidebar.markdown("""
+If you use this site for research, cite as:
+
+Omizo, R. (2022). Cohen's Kappa and chi2 Calculator. [Software]. Retrieved from https://share.streamlit.io/rmomizo/zsclf/main/kappa_st.py.
 with st.sidebar.expander("See References and Code Consulted"):
      st.write("""
 ## References/Code Consulted
