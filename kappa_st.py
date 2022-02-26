@@ -39,7 +39,7 @@ def chi_goodness():
     st.caption("Significance values are often set to 0.005, 0.05, and 0.1")
    
     col1 = st.text_input('Sample',value='37 75 98')
-    st.caption("❗This website does not retain user data.")
+    st.caption("📝 This app does not retain user data.")
     s1 = [int(c) for c in col1.split()]
    
     chi, p_val = chisquare(s1)
@@ -96,7 +96,7 @@ def chi():
     significance = float(st.text_input('Input significance value (default/max value is .05)', value='.05'))
     col1 = st.text_input('Sample 1',value='10 20 30')
     col2 = st.text_input('Sample 2', value='10 15 25')
-    st.caption("❗This website does not retain user data.")
+    st.caption("📝 This app does not retain user data.")
 
     s1 = [int(c) for c in col1.split()]
     s2 = [int(c) for c in col2.split()]
@@ -197,7 +197,7 @@ def kappa():
     
     col1 = st.text_input('Coder 1',value='a a b')
     col2 = st.text_input('Coder 2', value='a a b')
-    st.caption("❗This website does not retain user data.")
+    st.caption("📝 This app does not retain user data.")
  
     try:
         st.subheader('Results')
@@ -227,7 +227,7 @@ def kappa_file_upload():
     st.dataframe(dff)
     
     uploaded_file = st.file_uploader("Upload your data as .csv or .xlsx")
-    st.caption("❗This website does not retain user data.")
+    st.caption("📝 This app does not retain user data.")
 
     
    
