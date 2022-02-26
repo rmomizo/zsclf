@@ -110,7 +110,7 @@ def chi_goodness_file_upload():
        
         elif uploaded.name.endswith('xlsx'):
             df = pd.read_excel(uploaded)
-            col1 = df['sample']
+            s1 = df['sample']
             
             st.caption("📝 This app does not retain user data.")
             
