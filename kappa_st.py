@@ -1,7 +1,64 @@
 import streamlit as st 
 import pandas as pd 
 from sklearn.metrics import cohen_kappa_score, accuracy_score, confusion_matrix
-from scipy.stats import chi2, chi2_contingency
+from scipy.stats import chi2, chi2_contingency, chisquare
+
+def chi_goodness():
+    """
+    
+    """
+    st.title('chi2 Goodness of Fit Test')
+    st.write('This chi2 calculator assumes that your data consists of a single frequency distribution:')
+    
+    
+    st.markdown("""
+    |sample|value1|value2|value3|
+    |------|------|------|------|
+    |sample1|10|20|30|
+    
+    """)
+    st.caption("In this case, you copy and paste row-wise values")
+    st.markdown('Or')
+    st.markdown("""
+    |value|sample 1|
+    |-----|--------|
+    |value1|10|
+    |value2|20|
+    |value3|30|
+    """)
+    st.caption("In this case, you copy and paste column-wise values")
+       
+    
+       
+    st.write('The chi2 calculator accepts the first row of your data in the Sample field.')
+    
+    st.write('To use the chi2 calculator:')
+    st.write("""
+    1. Input the significant value (default/max value is .05)
+    2. Copy the values of your first sample and paste into the Sample text entry field and hit "Enter." 
+    
+    ❗By default, expected frequencies are equally likely. 
+       """)
+    significance = float(st.text_input('Input significance value (default/max value is .05)', value='.05'))
+    col1 = st.text_input('Sample 1',value='10 20 30')
+    
+
+    s1 = [int(c) for c in col1.split()]
+    
+       
+    chi, p_val = chisquare(s1)
+    p = 1 - significance
+    crit_val = chi2.ppf(p, len(col1)-1)
+    st.subheader('Results')
+    c1 = st.container()
+    c2, c3, c4 = st.columns(3)
+    
+    c1.metric('p-value', str(p_val))
+    c2.metric('Dataset Length',str(len(s1)))
+    c3.metric('degree of freedom',"{:e}".format(len(col1)-1)) 
+    c4.metric('\n chi2 test statistic',"{:.5f}".format(chi)) 
+    #c5.metric('critical value',"{:.5f}".format(crit_val))
+    st.write("For an extended discussion of using chi2 goodness of fit tests for qualitative coding, see [Geisler and Swarts (2019)](https://wac.colostate.edu/docs/books/codingstreams/chapter9.pdf)")
        
 
 def chi():
@@ -9,7 +66,7 @@ def chi():
     Python code adapted from Brownlee (June 15, 2018)
     """
     st.title('chi2 Test of Homogeneity')
-    st.write('This chi2 calculator assumes that your data takes the form of a contingency table:')
+    st.write('This chi2 calculator assumes that your data takes the form of a frequency table:')
     
     
     st.markdown("""
@@ -225,7 +282,7 @@ def main():
     st.sidebar.title("Cohen's Kappa and chi2 Calculator")
     st.sidebar.subheader("Calculate the inter-rater agreement between two coders using sklearn's `cohen_kappa_score` module or calculate the chi2 homogeneity of two samples with `scipy`")
 
-    options = st.sidebar.selectbox('What metric would you like to apply?',("Cohen's Kappa", 'chi2'))
+    options = st.sidebar.selectbox('What metric would you like to apply?',("Cohen's Kappa", 'chi2 Homogeneity','chi2 Goodness of Fit'))
     data_options = st.sidebar.selectbox('How would you like to submit your data?',("Copy and Paste","Upload .csv or .xlsx"))
     
  
@@ -234,11 +291,14 @@ def main():
         kappa()
     elif options == "Cohen's Kappa" and data_options == "Upload .csv or .xlsx":
        kappa_file_upload()
-    elif options == 'chi2' and data_options == "Copy and Paste":
+    elif options == 'chi2 Homogeneity' and data_options == "Copy and Paste":
         chi()
-    else:
- 
+    elif options == 'chi2 Homogeneity' and data_options == "Upload .csv or .xlsx":
         chi_file_upload()
+    elif options == 'chi2 Goodness of Fit' and data_options == "Copy and Paste":
+       chi_goodness()
+    else:
+       chi_goodness_file_upload()
 
 main()
 
