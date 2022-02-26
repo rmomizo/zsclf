@@ -141,6 +141,7 @@ def chi_file_upload():
     significance = float(st.text_input('Input significance value (default/max value is .05)', value='.05'))
     
     uploaded = st.file_uploader('Upload your .csv or .xlsx file.')
+    st.caption("📝 This app does not retain user data.")
     if uploaded != None:
         if uploaded.name.endswith('csv'):
             df = pd.read_csv(uploaded)
@@ -228,9 +229,6 @@ def kappa_file_upload():
     
     uploaded_file = st.file_uploader("Upload your data as .csv or .xlsx")
     st.caption("📝 This app does not retain user data.")
-
-    
-   
     if uploaded_file != None:
         if str(uploaded_file.name).endswith('csv'):
             df = pd.read_csv(uploaded_file)
@@ -321,11 +319,17 @@ Geisler, C., & Swarts, J. (2019). Coding streams of language: Techniques for the
 
 Hart-Davidson, William. (2014). “Using Cohen’s Kappa to Gauge Interrater Reliability.” Education, 10:44:25 UTC. https://www.slideshare.net/billhd/kappa870.
 
+Lowry, R. (2014). Concepts and applications of inferential statistics.
+
 McHugh, Mary L. (2012 October 15). “Interrater Reliability: The Kappa Statistic.” Biochemia Medica 22, no. 3: 276–82.
+
+Pearson, K. (1900). X. On the criterion that a given system of deviations from the probable in the case of a correlated system of variables is such that it can be reasonably supposed to have arisen from random sampling. The London, Edinburgh, and Dublin Philosophical Magazine and Journal of Science, 50(302), 157-175.
 
 Pedregosa, F. and Varoquaux, G. and Gramfort, A. and Michel, V. and Thirion, B. and Grisel, O. and Blondel, M. and Prettenhofer, P.and Weiss, R. and Dubourg, V. and Vanderplas, J. and Passos, A. and Cournapeau, D. and Brucher, M. and Perrot, M. and Duchesnay, E. (2011). Scikit-Learn: Machine Learning in Python. the Journal of machine Learning research, 12, 2825-2830.
 
 scikit-learn developers. (2021). sklearn.metrics.cohen_kappa_score. Retrieved from https://scikit-learn.org/stable/modules/generated/sklearn.metrics.cohen_kappa_score.html.
+
+scipy Community. (2022). scipy.stats.chisquare. Retrieved from https://docs.scipy.org/doc/scipy/reference/generated/scipy.stats.chisquare.html.
 
 scipy Community. (2022). scipy.stats.chi2_contingency. Retrieved from https://docs.scipy.org/doc/scipy/reference/generated/scipy.stats.chi2_contingency.html.
 
