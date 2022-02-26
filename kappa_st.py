@@ -276,7 +276,7 @@ def kappa_file_upload():
 def main():
     
     st.sidebar.title("Cohen's Kappa and chi2 Calculator")
-    st.sidebar.subheader("Calculate the inter-rater agreement between two coders using sklearn's `cohen_kappa_score` module or calculate the chi2 homogeneity of two samples with `scipy`")
+    st.sidebar.subheader("Calculate the inter-rater agreement between two coders using [sklearn's](https://scikit-learn.org/stable/) `cohen_kappa_score` module or calculate the chi2 goodness of fit test on single samples or chi2 homogeneity on two samples with [`scipy`](https://docs.scipy.org/doc/scipy/index.html)")
 
     options = st.sidebar.selectbox('What metric would you like to apply?',("Cohen's Kappa","chi2 Goodness of Fit", "chi2 Homogeneity"))
     data_options = st.sidebar.selectbox('How would you like to submit your data?',("Copy and Paste","Upload .csv or .xlsx"))
