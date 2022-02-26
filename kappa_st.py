@@ -45,13 +45,13 @@ def chi_goodness():
     crit_val = chi2.ppf(p, len(s1)-1)
     st.subheader('Results')
     c1 = st.container()
-    c2, c3, c4 = st.columns(3)
+    c2, c3, c4, c5 = st.columns(4)
     
     c1.metric('p-value', str(p_val))
     c2.metric('Dataset Length',str(len(s1)))
-    c3.metric('degree of freedom',"{:e}".format(len(s1)-1)) 
+    c3.metric('degree of freedom',"{:.2f}".format(len(s1)-1)) 
     c4.metric('\n chi2 test statistic',"{:.5f}".format(chi)) 
-    #c5.metric('critical value',"{:.5f}".format(crit_val))
+    c5.metric('critical value',"{:.5f}".format(crit_val))
     st.write("For an extended discussion of using chi2 goodness of fit tests for qualitative coding, see [Geisler and Swarts (2019)](https://wac.colostate.edu/docs/books/codingstreams/chapter9.pdf)")
        
 
