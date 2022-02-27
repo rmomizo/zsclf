@@ -2,6 +2,7 @@ import streamlit as st
 import pandas as pd 
 from sklearn.metrics import cohen_kappa_score, accuracy_score, confusion_matrix
 from scipy.stats import chi2, chi2_contingency, chisquare
+import matplotlib.pyplot as plt
 
 def chi_goodness():
     """
@@ -41,7 +42,9 @@ def chi_goodness():
     col1 = st.text_input('Sample',value='37 75 98')
     st.caption("📝 This app does not retain user data.")
     s1 = [int(c) for c in col1.split()]
-   
+    E = len(s1)/sum(s1)
+    chis = [(s - E)**2/E for s in s1]
+    
     chi, p_val = chisquare(s1)
     p = 1 - significance
     crit_val = chi2.ppf(p, len(s1)-1)
@@ -54,6 +57,9 @@ def chi_goodness():
     c3.metric('degree of freedom',"{:.2f}".format(len(s1)-1)) 
     c4.metric('\n chi2 test statistic',"{:.5f}".format(chi)) 
     c5.metric('critical value',"{:.5f}".format(crit_val))
+    
+    chart_df = pd.DataFrame(chis, columns=['chis'])
+    st.bar_chart(chart_df)
     st.write("For an extended discussion of using chi2 goodness of fit tests for qualitative coding, see [Geisler and Swarts (2019)](https://wac.colostate.edu/docs/books/codingstreams/chapter9.pdf)")
        
 def chi_goodness_file_upload():
