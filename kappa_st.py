@@ -42,7 +42,7 @@ def chi_goodness():
     col1 = st.text_input('Sample',value='37 75 98')
     st.caption("📝 This app does not retain user data.")
     s1 = [int(c) for c in col1.split()]
-    E = len(s1)/sum(s1)
+    E = sum(s1)/len(s1)
     chis = [(s - E)**2/E for s in s1]
     
     chi, p_val = chisquare(s1)
