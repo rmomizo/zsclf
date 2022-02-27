@@ -54,12 +54,13 @@ def chi_goodness():
     
     c1.metric('p-value', str(p_val))
     c2.metric('Dataset Length',str(len(s1)))
-    c3.metric('degree of freedom',"{:.2f}".format(len(s1)-1)) 
+    c3.metric('degree of freedom',"{:.2f}".format(len(s1)-1))
+    chart_df = pd.DataFrame(chis, columns=['(O-E)**2/E'])
+    st.bar_chart(chart_df)
     c4.metric('\n chi2 test statistic',"{:.5f}".format(chi)) 
     c5.metric('critical value',"{:.5f}".format(crit_val))
     
-    chart_df = pd.DataFrame(chis, columns=['chis'])
-    st.bar_chart(chart_df)
+   
     st.write("For an extended discussion of using chi2 goodness of fit tests for qualitative coding, see [Geisler and Swarts (2019)](https://wac.colostate.edu/docs/books/codingstreams/chapter9.pdf)")
        
 def chi_goodness_file_upload():
@@ -185,7 +186,7 @@ def chi():
     
     c1.metric('p-value', str(p_val))
     c2.metric('Dataset Length',str(len(s1)))
-    c3.metric('degree of freedom',"{:e}".format(dof)) 
+    c3.metric('degree of freedom',"{:.2f}".format(dof)) 
     c4.metric('\n chi2 test statistic',"{:.5f}".format(chi)) 
     c5.metric('critical value',"{:.5f}".format(crit_val))
     st.write("For an extended discussion of using chi2 tests for homogeneity for qualitative coding, see [Geisler and Swarts (2019)](https://wac.colostate.edu/docs/books/codingstreams/chapter9.pdf)")
@@ -285,7 +286,7 @@ def kappa():
         labels = sorted(list(set(col1.split()+ col2.split())))
         indices = [str(label)+'_' for label in labels]
         st.write("Confusion Matrix:")
-        st.table(pd.DataFrame(confusion_matrix(col1.split(),col2.split()),index=indices,columns=labels))
+        st.dataframe(pd.DataFrame(confusion_matrix(col1.split(),col2.split()),index=indices,columns=labels))
         st.caption('Note: Coder 1 is used as the baseline for evaluation.')
         st.markdown("For more an extended presentation on Cohen's Kappa see Hart-Davidson (2014), [Using Cohen's Kappa to Gauge Interrater Reliability](https://www.slideshare.net/billhd/kappa870)")
     except ValueError:
@@ -321,7 +322,7 @@ def kappa_file_upload():
             labels = sorted(list(set(col1+ col2)))
             indices = [str(label)+'_' for label in labels]
             st.write("Confusion Matrix:")
-            st.table(pd.DataFrame(confusion_matrix(col1,col2),index=indices,columns=labels))
+            st.dataframe(pd.DataFrame(confusion_matrix(col1,col2),index=indices,columns=labels))
             st.caption('Note: Coder 1 is used as the baseline for evaluation.')
 
             st.markdown("For more an extended presentation on Cohen's Kappa see Hart-Davidson (2014), [Using Cohen's Kappa to Gauge Interrater Reliability(https://www.slideshare.net/billhd/kappa870)")
@@ -342,7 +343,7 @@ def kappa_file_upload():
            indices = [str(label)+'_' for label in labels]
 
            st.write("Confusion Matrix (Coder 1 is treated as the baseline for evaluation):")
-           st.table(pd.DataFrame(confusion_matrix(col1,col2),index=indices,columns=labels))
+           st.dataframe(pd.DataFrame(confusion_matrix(col1,col2),index=indices,columns=labels))
            st.caption('Note: Coder 1 is used as the baseline for evaluation.')
 
            st.markdown("For more an extended presentation on Cohen's Kappa see Hart-Davidson (2014), [Using Cohen's Kappa to Gauge Interrater Reliability](https://www.slideshare.net/billhd/kappa870)")
