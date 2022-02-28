@@ -3,6 +3,8 @@ import pandas as pd
 from sklearn.metrics import cohen_kappa_score, accuracy_score, confusion_matrix
 from scipy.stats import chi2, chi2_contingency, chisquare
 import matplotlib.pyplot as plt
+from sklearn.linear_model import LogisticRegression
+from sklearn.feature_extraction.text import TfidfVectorizer
 
 def chi_goodness():
     """
@@ -350,13 +352,51 @@ def kappa_file_upload():
            #except ValueError:
             #   st.markdown('<mark>Error: Data must be the same length</mark>', unsafe_allow_html=True)
     
+def lgr_classify():
+    uploaded_file = st.file_uploader("Upload your data as .csv or .xlsx")
+    st.caption("📝 This app does not retain user data.")
+    if uploaded_file != None:
+        if str(uploaded_file.name).endswith('csv'):
+                df = pd.read_csv(uploaded_file)
+
+                st.subheader('Results')
+
+                texts = df['text'].tolist()
+                labels = df['code'].tolist()
+                lgr = LogisticRegression()
+                tfidf = TfidfVectorizer()
+                
+                tvecs = tfidf.fit_transform(texts)
+                lgr.fit(tvecs, labels)
+                submission = st.text_input('Input sentence',value='')
+                
+                submission_vec = tfidf.transform(submission)
+                st.write(lgr.predict(submission_vec))
+
+                #except ValueError:
+                 #   st.markdown('<mark>Error: Data must be the same length</mark>', unsafe_allow_html=True)
+            elif str(uploaded_file.name).endswith('xlsx'):
+                df = pd.read_csv(uploaded_file)
+                st.subheader('Results')
+
+                texts = df['text'].tolist()
+                labels = df['code'].tolist()
+                lgr = LogisticRegression()
+                tfidf = TfidfVectorizer()
+                
+                tvecs = tfidf.fit_transform(texts)
+                lgr.fit(tvecs, labels)
+                submission = st.text_input('Input sentence',value='')
+                
+                submission_vec = tfidf.transform(submission)
+                st.write(lgr.predict(submission_vec))
     
 def main():
     
     st.sidebar.title("Cohen's Kappa and chi2 Calculator")
     st.sidebar.subheader("Calculate Cohen's Kappa coefficient between two raters using [`sklearn`](https://scikit-learn.org/stable/) or calculate the chi2 goodness of fit test on single samples or chi2 homogeneity on two samples with [`scipy`](https://docs.scipy.org/doc/scipy/index.html)")
     
-    options = st.sidebar.selectbox('What metric would you like to apply?',("Cohen's Kappa","chi2 Goodness of Fit", "chi2 Homogeneity"))
+    options = st.sidebar.selectbox('What metric would you like to apply?',("Cohen's Kappa","chi2 Goodness of Fit", "chi2 Homogeneity",'Logistic Regression Classification'))
     data_options = st.sidebar.selectbox('How would you like to submit your data?',("Copy and Paste","Upload .csv or .xlsx"))
     
  
@@ -371,8 +411,10 @@ def main():
         chi_file_upload()
     elif options == 'chi2 Goodness of Fit' and data_options == "Copy and Paste":
        chi_goodness()
-    else:
+    elif 'chi2 Goodness of Fit' and data_options == "Upload .csv or .xlsx":
        chi_goodness_file_upload()
+    else:
+        lgr_classify()
 
 main()
 
