@@ -375,7 +375,7 @@ def lgr_classify():
 
                 #except ValueError:
                  #   st.markdown('<mark>Error: Data must be the same length</mark>', unsafe_allow_html=True)
-       elif str(uploaded_file.name).endswith('xlsx'):
+      elif str(uploaded_file.name).endswith('xlsx'):
                 df = pd.read_csv(uploaded_file)
                 st.subheader('Results')
 
