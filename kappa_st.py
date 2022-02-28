@@ -358,24 +358,17 @@ def lgr_classify():
     if uploaded_file != None:
         if str(uploaded_file.name).endswith('csv'):
                 df = pd.read_csv(uploaded_file)
-
                 st.subheader('Results')
-
                 texts = df['text'].tolist()
                 labels = df['code'].tolist()
                 lgr = LogisticRegression()
                 tfidf = TfidfVectorizer()
-                
                 tvecs = tfidf.fit_transform(texts)
                 lgr.fit(tvecs, labels)
                 submission = st.text_input('Input sentence',value='')
-                
                 submission_vec = tfidf.transform(submission)
                 st.write(lgr.predict(submission_vec))
-
-                #except ValueError:
-                 #   st.markdown('<mark>Error: Data must be the same length</mark>', unsafe_allow_html=True)
-      elif str(uploaded_file.name).endswith('xlsx'):
+        elif str(uploaded_file.name).endswith('xlsx'):
                 df = pd.read_csv(uploaded_file)
                 st.subheader('Results')
 
