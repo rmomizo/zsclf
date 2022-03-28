@@ -18,11 +18,9 @@ from sklearn.model_selection import train_test_split
 import pickle
 import base64
 import plotly.express as px
-from st_aggrid import AgGrid, GridOptionsBuilder
 from scipy import stats
 import numpy as np
 import statsmodels.api as sm
-from sklearn.feature_selection import chi2 as sklearn_chi2, f_classif, f_regression
 from sklearn.preprocessing import OneHotEncoder, LabelEncoder, MultiLabelBinarizer, OrdinalEncoder, normalize
 from sklearn.datasets import load_wine, fetch_20newsgroups, fetch_california_housing
 
