@@ -2,7 +2,7 @@
 [https://share.streamlit.io/rmomizo/zsclf/main/kappa_streamlit.py](https://share.streamlit.io/rmomizo/zsclf/main/kappa_streamlit.py)
 
 ## Overview
-QC Utils demos key metrics from Cheryl Geisler and Jason Swarts' (2019) *Coding Streams of Language: Techniques for the Systematic Coding of Text, Talk, and Other Verbal Data.*
+QC Utils demos key metrics from Cheryl Geisler and Jason Swarts' (2019) [_Coding Streams of Langauge: Techniques for the Systematic Coding of Text, Talk, and Other Verbal Data_](https://wac.colostate.edu/books/practice/codingstreams/)
 
 QC Utils serves as wrapper for the Python statistical processing libraires `scikit-learn` (Pedrogosa et al., 2013), `The Natural Language Toolkit` (NLTK) (Bird, Loper, and Klein, 2009),`statsmodels` (Seabold, Skipper, and Josef Perktold, 2010) and `scipy` (Virtanen et al., 2020) built and hosted by Streamlit.
 
@@ -16,7 +16,7 @@ linear regression (tabular data)
 logistic regression classification (text and tabular data)
 
 ## Introduction
-Cheryl Geisler and Jason Swarts' (2019) guide to mixed-methods coding research, Coding Streams of Langauge: Techniques for the Systematic Coding of Text, Talk, and Other Verbal Data has proven to be an indispensable resource for researchers in the fields of rhetoric, composition, technical communication wishing to conduct qualitative and/or mixed method research into language use, including textual and verbal data. Geisler and Swarts (2019) lead practitioners through the entire process of qualitative or mixed-methods coding design, including the identification of research constructs, the creation of coding books, the application and validation of qualitative codes, data analysis, and reporting results.
+Cheryl Geisler and Jason Swarts' (2019) guide to mixed-methods coding research, [_Coding Streams of Langauge: Techniques for the Systematic Coding of Text, Talk, and Other Verbal Data_](https://wac.colostate.edu/books/practice/codingstreams/) has proven to be an indispensable resource for researchers in the fields of rhetoric, composition, technical communication wishing to conduct qualitative and/or mixed method research into language use, including textual and verbal data. Geisler and Swarts (2019) lead practitioners through the entire process of qualitative or mixed-methods coding design, including the identification of research constructs, the creation of coding books, the application and validation of qualitative codes, data analysis, and reporting results.
 
 Geisler and Swarts (2019) present a suite of statistical tests for validating codebooks (Cohen's Kappa) and determining the significance of numerical results (e.g., chi2 goodness of fit or chi2 homogeneity tests). The QC Utils app offers an online demonstration of key metrics discussed in Geisler and Swarts (2019) for teaching purposes and small-scale data analysis. As a pedagogical tool, QC Utils is best used in conjunction with introductory lessons on qualitative or mixed methods coding analytics, allowing students to view the results of statistical processing without intensive data preparation.
 
