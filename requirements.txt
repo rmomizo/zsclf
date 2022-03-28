@@ -1,5 +1,5 @@
+pip==22.0.4
 sklearn
-click==8.0.4
 matplotlib
 nltk
 scipy
@@ -7,3 +7,5 @@ statsmodels
 xlsxwriter
 openpyxl
 plotly
+click==8.0.4
+
