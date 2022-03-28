@@ -2425,10 +2425,9 @@ Omizo, R. (2022). QC Utils. [Software]. Retrieved from https://share.streamlit.i
 
 def about():
     st.title("About")
-    
     st.markdown("### Overview")
     st.write("**QC Utils** demos key metrics from Cheryl Geisler and Jason Swarts' (2019) [_Coding Streams of Language: Techniques for the Systematic Coding of Text, Talk, and Other Verbal Data_](https://wac.colostate.edu/books/practice/codingstreams/).")
-    st.write("**QC Utils** serves as wrapper for the Python statistical processing libraires `scikit-learn` (Pedrogosa et al., 2013), `The Natural Language Toolkit (NLTK)`,`statsmodels`, and `scipy` (Virtanen et al., 2020) built and hosted by [Streamlit](https://streamlit.io/).")
+    st.write("**QC Utils** serves as wrapper for the Python statistical processing libraires `scikit-learn` (Pedrogosa et al., 2013), `The Natural Language Toolkit (NLTK)`  (Bird, Loper, and Klein, 2009,`statsmodels` (Seabold, Skipper, and Josef Perktold, 2010), and `scipy` (Virtanen et al., 2020) built and hosted by [Streamlit](https://streamlit.io/).")
     
     st.markdown("""
     With `QC Utils`, you can run:
@@ -2462,7 +2461,7 @@ Outside of the ecosystem of resources provided by Geisler and Swarts (2019), the
 - trainable and downloadable machine learning classifiers (text and tabular data)
     
     """)
-    
+
     st.markdown("""
     ### How to use `QC Utils`
     
