@@ -2449,7 +2449,7 @@ Geisler and Swarts (2019) present a suite of statistical tests for validating co
 ### Use Case
 _Coding Streams_ already offers directive lessons and supplementary materials for codebook validation, significance testing, and multinomial logistic regression. These supplementary materials include videos and tutorials for conducting the aforementioned tests in Excel, AntConc (CITE), or MaxQDA. These lessons provide step-by-step instructions for utilizing statistical testing for research projects of any scale.
     
-There is also an `R` app to compute multinomial logistic regression (CITE).
+There is also an R app to compute multinomial logistic regression(https://shiny.chass.ncsu.edu/codingstreams/) created by Emily Griffith of NC State University.
 
 Outside of the ecosystem of resources provided by Geisler and Swarts (2019), there are other statistical processing libraries (like those underpinning `QC Utils`). For example, Ken Harmon (n.d.) offers a streamlit app that handles significance and regression testing: [https://github.com/harmkenn/python-stat-tools](https://github.com/harmkenn/python-stat-tools).
 
