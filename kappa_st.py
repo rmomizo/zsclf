@@ -21,7 +21,6 @@ import plotly.express as px
 from scipy import stats
 import numpy as np
 import statsmodels.api as sm
-from sklearn.feature_selection import chi2 as sklearn_chi2
 from sklearn.preprocessing import OneHotEncoder, LabelEncoder, MultiLabelBinarizer, OrdinalEncoder, normalize
 from sklearn.datasets import load_wine, fetch_20newsgroups, fetch_california_housing
 
