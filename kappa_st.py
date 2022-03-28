@@ -16,12 +16,11 @@ from sklearn.feature_extraction.text import TfidfVectorizer
 import itertools
 from sklearn.model_selection import train_test_split
 import pickle
-import base64
 import plotly.express as px
 from scipy import stats
 import numpy as np
 import statsmodels.api as sm
-from sklearn.preprocessing import OneHotEncoder, LabelEncoder, MultiLabelBinarizer, OrdinalEncoder, normalize
+from sklearn.preprocessing import OneHotEncoder, LabelEncoder, MultiLabelBinarizer
 from sklearn.datasets import load_wine, fetch_20newsgroups, fetch_california_housing
 
 def flatten_list(somelist):
