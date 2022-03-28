@@ -11,7 +11,7 @@ import matplotlib.pyplot as plt
 import numpy as np
 from scipy.special import expit as logistic
 import warnings
-from sklearn.linear_model import LogisticRegression, LinearRegression
+from sklearn.linear_model import LogisticRegression
 from sklearn.feature_extraction.text import TfidfVectorizer
 import itertools
 from sklearn.model_selection import train_test_split
@@ -21,7 +21,7 @@ import plotly.express as px
 from scipy import stats
 import numpy as np
 import statsmodels.api as sm
-from sklearn.feature_selection import chi2 as sklearn_chi2, 
+from sklearn.feature_selection import chi2 as sklearn_chi2
 from sklearn.preprocessing import OneHotEncoder, LabelEncoder, MultiLabelBinarizer, OrdinalEncoder, normalize
 from sklearn.datasets import load_wine, fetch_20newsgroups, fetch_california_housing
 
