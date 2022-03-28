@@ -1,8 +1,7 @@
 sklearn
-nltk==3.7
+matplotlib
 scipy
 statsmodels
 xlsxwriter
 openpyxl
 plotly
-matplotlib==3.5.1
