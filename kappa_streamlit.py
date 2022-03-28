@@ -2349,7 +2349,7 @@ def lgr_demo_text():
     std_coef = pd.DataFrame(train_vecs.todense()).std(axis=0).tolist()
     ff = pd.DataFrame({'feature':[y for (x,y) in feats],'coef':[feats[i][0] * std_coef[i] for i in range(len(feats))]})
     
-    fff = ff.sort_values('coef',ascending=False)
+    fff = ff.sort_values('coef',ascending=True)
     tc2, tc3 =st.columns(2)
     
     tc2.markdown("""#### Decision Function Coeffecients""")
