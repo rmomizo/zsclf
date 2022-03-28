@@ -1753,7 +1753,7 @@ def train_lgr_text(uploaded_file):
             
             tc2.markdown("""#### Decision Function Coeffecients""")
             
-            fff = ff.sort_values('coef',ascending=True)
+            fff = ff.sort_values('coef',ascending=False)
             
             
             tc2.write(fff)        
@@ -2332,8 +2332,6 @@ def lgr_demo_text():
     
     tc0,tc1 = st.columns(2)
     
-
-
     tc0.markdown("""### Classifier Parameters""")
     
     tc0.write(lgr_d.get_params())    
