@@ -2,9 +2,9 @@
 [https://share.streamlit.io/rmomizo/zsclf/main/kappa_streamlit.py](https://share.streamlit.io/rmomizo/zsclf/main/kappa_streamlit.py)
 
 ## Overview
-QC Utils demos key metrics from Cheryl Geisler and Jason Swarts' (2019) Coding Streams of Language: Techniques for the Systematic Coding of Text, Talk, and Other Verbal Data.
+QC Utils demos key metrics from Cheryl Geisler and Jason Swarts' (2019) *Coding Streams of Language: Techniques for the Systematic Coding of Text, Talk, and Other Verbal Data.*
 
-QC Utils serves as wrapper for the Python statistical processing libraires scikit-learn (Pedrogosa et al., 2013), The Natural Language Toolkit (NLTK) (Bird, Loper, and Klein, 2009),statsmodels (Seabold, Skipper, and Josef Perktold, 2010) and scipy (Virtanen et al., 2020) built and hosted by Streamlit.
+QC Utils serves as wrapper for the Python statistical processing libraires `scikit-learn` (Pedrogosa et al., 2013), `The Natural Language Toolkit` (NLTK) (Bird, Loper, and Klein, 2009),`statsmodels` (Seabold, Skipper, and Josef Perktold, 2010) and `scipy` (Virtanen et al., 2020) built and hosted by Streamlit.
 
 With QC Utils, you can run:
 
@@ -36,10 +36,7 @@ Outside of the ecosystem of resources provided by Geisler and Swarts (2019), the
 - a Python adaptation of Geisler and Swarts (2019) that connects its lessons to another, popular statistical programming language and provides example Python code so that people can take this work offline.
 - additional statistical metrics not discussed in Geisler and Swarts (2019) but applicable
 - trainable and downloadable machine learning classifiers (text and tabular data)
-    
-
-    
-
+- 
 ## How to use `QC Utils`
     
 The first step is to determine which test(s) is appropriate for your data (see Geisler and Swarts, 2019, pp. XX-XX).
@@ -63,7 +60,6 @@ The first step is to determine which test(s) is appropriate for your data (see G
 
 `QC Utils` can accept text and numerical inputs and file uploads (.csv, .xls, and .xlsx). See individual metric pages for input options.
 
-    
 ### References, Code Consulted, Software Libraries Used
 Anthony, L. (2022). AntConc (Version 4.0.5) [Computer Software]. Tokyo, Japan: Waseda University. Retrieved from https://www.laurenceanthony.net/software
 
