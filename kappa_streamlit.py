@@ -2447,7 +2447,7 @@ Cheryl Geisler and Jason Swarts' (2019) guide to mixed-methods coding research, 
 Geisler and Swarts (2019) present a suite of statistical tests for validating codebooks (Cohen's Kappa) and determining the significance of numerical results (e.g., chi2 goodness of fit or chi2 homogeneity tests). The QC Utils app offers an online demonstration of key metrics discussed in Geisler and Swarts (2019) for teaching purposes and small-scale data analysis. As a pedagogical tool, QC Utils is best used in conjunction with introductory lessons on qualitative or mixed methods coding analytics, allowing students to view the results of statistical processing without intensive data preparation.
     
 ### Use Case
-_Coding Streams_ already offers directive lessons and supplementary materials for codebook validation, significance testing, and multinomial logistic regression. These supplementary materials include videos and tutorials for conducting the aforementioned tests in Excel, AntConc (CITE), or MaxQDA. These lessons provide step-by-step instructions for utilizing statistical testing for research projects of any scale.
+_Coding Streams_ already offers directive lessons and supplementary materials for codebook validation, significance testing, and multinomial logistic regression. These supplementary materials include videos and tutorials for conducting the aforementioned tests in Excel (Microsoft Corporation, 2018), AntConc (Anthony, 2022), or MaxQDA (VERBI Software,2021). These lessons provide step-by-step instructions for utilizing statistical testing for research projects of any scale.
     
 There is also an R app to compute multinomial logistic regression(https://shiny.chass.ncsu.edu/codingstreams/) created by Emily Griffith of NC State University.
 
@@ -2490,7 +2490,8 @@ The first step is to determine which test(s) is appropriate for your data (see G
     
     st.markdown("### References, Code Consulted, Software Libraries Used")
     st.write("""
-          
+Anthony, L. (2022). AntConc (Version 4.0.5) [Computer Software]. Tokyo, Japan: Waseda University. Retrieved from https://www.laurenceanthony.net/software
+
 Bird, Steven, Edward Loper and Ewan Klein (2009), Natural Language Processing with Python. O’Reilly Media Inc.
 
 Boettger, R. K., & Palmer, L. A. (2010). Quantitative content analysis: Its use in technical communication. IEEE transactions on professional communication, 53(4), 346-357.
@@ -2530,6 +2531,8 @@ McHugh, Mary L. (2012 October 15). “Interrater Reliability: The Kappa Statisti
 
 McNulty, K. (2021). Handbook of regression modeling in people analytics: With examples in R and Python.
 
+Microsoft Corporation. (2018). Microsoft Excel. Retrieved from https://office.microsoft.com/excel
+
 Montgomery, D. C., & Peck, E. A. (1992). Introduction to Linear Regression Analysis., 2nd edn.(John Wiley & Sons: New York.).
 
 Multinomial Logistic Regression for Categorically-Coded Verbal Data. (n.d.). [Software]. Retrieved from https://shiny.chass.ncsu.edu/codingstreams/.
@@ -2565,6 +2568,8 @@ Streamlit. (May 2020). How to download a trained model. Retrieved from https://d
 Szumilas, M. (2010). Explaining odds ratios. Journal of the Canadian academy of child and adolescent psychiatry, 19(3), 227.
 
 Virtanen, P., Ralf Gommers, Travis E. Oliphant, Matt Haberland, Tyler Reddy, David Cournapeau, Evgeni Burovski, Pearu Peterson, Warren Weckesser, Jonathan Bright, Stéfan J. van der Walt, Matthew Brett, Joshua Wilson, K. Jarrod Millman, Nikolay Mayorov, Andrew R. J. Nelson, Eric Jones, Robert Kern, Eric Larson, C J Carey, İlhan Polat, Yu Feng, Eric W. Moore, Jake VanderPlas, Denis Laxalde, Josef Perktold, Robert Cimrman, Ian Henriksen, E. A. Quintero, Charles R. Harris, Anne M. Archibald, Antônio H. Ribeiro, Fabian Pedregosa, Paul van Mulbregt & SciPy 1.0 Contributors. (2020). SciPy 1.0: fundamental algorithms for scientific computing in Python. Nature methods, 17(3), 261-272
+
+VERBI Software. (2021). MAXQDA 2022 [computer software]. Berlin, Germany: VERBI Software. Available from maxqda.com.
 """)
 
 main()
