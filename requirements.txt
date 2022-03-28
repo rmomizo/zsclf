@@ -1,8 +1,9 @@
 sklearn
+nltk
+click==8.0.4
 scipy
 statsmodels
 xlsxwriter
 openpyxl
 plotly
 matplotlib
-nltk
